@@ -17,22 +17,6 @@
             lapta: "tr/rotalar/lapta-koy-ve-sahil-rotasi/",
             korucam: "tr/rotalar/korucam-maronit-kultur-rotasi/",
             mehmetcik: "tr/rotalar/mehmetcik-bafra-bogaz-rotasi/"
-        },
-        ru: {
-            home: "ru/",
-            buffavento: "ru/marshruty/gornyy-marshrut-buffavento/",
-            kantara: "ru/marshruty/kantara-i-vostochnoe-poberezhe/",
-            lapta: "ru/marshruty/lapta-derevnya-i-poberezhe/",
-            korucam: "ru/marshruty/maronitskiy-marshrut-korucham/",
-            mehmetcik: "ru/marshruty/mehmetchik-bafra-bogaz/"
-        },
-        ar: {
-            home: "ar/",
-            buffavento: "ar/masarat/masar-buffavento-aljabali/",
-            kantara: "ar/masarat/masar-kantara-walsahil-alsharqi/",
-            lapta: "ar/masarat/masar-lapta-walsahil/",
-            korucam: "ar/masarat/masar-korucam-almaruni/",
-            mehmetcik: "ar/masarat/masar-mehmetcik-bafra-bogaz/"
         }
     };
 
@@ -66,44 +50,12 @@
                 korucam: "Koruçam Maronit Kültürü",
                 mehmetcik: "Mehmetçik, Bafra ve Boğaz"
             }
-        },
-        ru: {
-            home: "Главная",
-            routes: "Маршруты",
-            explore: "Открыть маршруты",
-            menuLabel: "Открыть навигацию",
-            languageLabel: "Выбрать язык",
-            footerText: "Независимые маршруты для знакомства с Северным Кипром.",
-            routeNames: {
-                buffavento: "Буффавенто и забытые монастыри",
-                kantara: "Кантара и восточное побережье",
-                lapta: "Лапта: деревня и побережье",
-                korucam: "Коруçam и маронитская культура",
-                mehmetcik: "Мехметчик, Бафра и Богаз"
-            }
-        },
-        ar: {
-            home: "الرئيسية",
-            routes: "المسارات",
-            explore: "استكشف المسارات",
-            menuLabel: "فتح قائمة التنقل",
-            languageLabel: "اختر اللغة",
-            footerText: "مسارات مستقلة لاكتشاف شمال قبرص.",
-            routeNames: {
-                buffavento: "بوفافينتو والأديرة المنسية",
-                kantara: "كانتارا والساحل الشرقي",
-                lapta: "لابتا: القرية والساحل",
-                korucam: "كوروتشام والثقافة المارونية",
-                mehmetcik: "محمدجيك وبافرا وبوغاز"
-            }
         }
     };
 
     const languageNames = {
-        en: "EN",
-        tr: "TR",
-        ru: "RU",
-        ar: "AR"
+        en: "English",
+        tr: "Türkçe"
     };
 
     function getPageSettings() {
@@ -145,8 +97,7 @@
         const languageLinks = Object.keys(languageNames).map((language) => `
             <a class="${locale === language ? "is-current" : ""}"
                href="${buildUrl(language, page, root)}"
-               lang="${language}"
-               ${language === "ar" ? 'dir="rtl"' : ""}>
+               lang="${language}">
                 ${languageNames[language]}
             </a>
         `).join("");
@@ -277,7 +228,6 @@
         const footerTarget = document.querySelector("[data-site-footer]");
 
         document.documentElement.lang = locale;
-        document.documentElement.dir = locale === "ar" ? "rtl" : "ltr";
 
         if (headerTarget) {
             headerTarget.innerHTML = createHeader(locale, page, root);
