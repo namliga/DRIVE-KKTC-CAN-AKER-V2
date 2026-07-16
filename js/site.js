@@ -5,6 +5,16 @@
         "(prefers-reduced-motion: reduce)"
     );
 
+    const routeSceneTimings = {
+        mapStart: 0,
+        routeStart: 0.16,
+        routeArrive: 0.46,
+        pointActivate: 0.48,
+        panelEnter: 0.53,
+        panelVisible: 0.68,
+        panelExit: 0.84
+    };
+
     const cinematicRoutes = [
         {
             id: "korucam",
@@ -15,9 +25,9 @@
             rotateX: 52,
             rotateY: -9,
             lineProgress: 0.06,
-            hudNumber: "01 / 05",
-            hudRegion: "Koruçam / West coast",
-            hudCoordinates: "SVG GRID / 194 × 190"
+            hudNumber: "1 / 5",
+            hudRegion: "Koruçam",
+            hudCoordinates: "Western coast / Maronite village"
         },
         {
             id: "lapta",
@@ -28,9 +38,9 @@
             rotateX: 50,
             rotateY: -5,
             lineProgress: 0.18,
-            hudNumber: "02 / 05",
-            hudRegion: "Lapta / Kyrenia west",
-            hudCoordinates: "SVG GRID / 236 × 193"
+            hudNumber: "2 / 5",
+            hudRegion: "Lapta",
+            hudCoordinates: "Kyrenia west / Coastal route"
         },
         {
             id: "buffavento",
@@ -41,9 +51,9 @@
             rotateX: 43,
             rotateY: 0,
             lineProgress: 0.41,
-            hudNumber: "03 / 05",
-            hudRegion: "Buffavento / Kyrenia range",
-            hudCoordinates: "SVG GRID / 298 × 220"
+            hudNumber: "3 / 5",
+            hudRegion: "Buffavento",
+            hudCoordinates: "Kyrenia range / Mountain route"
         },
         {
             id: "kantara",
@@ -54,9 +64,9 @@
             rotateX: 49,
             rotateY: 7,
             lineProgress: 0.84,
-            hudNumber: "04 / 05",
-            hudRegion: "Kantara / Eastern range",
-            hudCoordinates: "SVG GRID / 432 × 156"
+            hudNumber: "4 / 5",
+            hudRegion: "Kantara",
+            hudCoordinates: "Eastern range / Panoramic route"
         },
         {
             id: "mehmetcik",
@@ -67,9 +77,9 @@
             rotateX: 47,
             rotateY: 10,
             lineProgress: 1,
-            hudNumber: "05 / 05",
-            hudRegion: "Mehmetçik / Karpaz gateway",
-            hudCoordinates: "SVG GRID / 472 × 147"
+            hudNumber: "5 / 5",
+            hudRegion: "Mehmetçik",
+            hudCoordinates: "Karpas gateway / Coastal drive"
         }
     ];
 
@@ -83,9 +93,9 @@
             rotateX: 56,
             rotateY: -8,
             lineProgress: 0,
-            hudNumber: "00 / 05",
+            hudNumber: "5 routes",
             hudRegion: "Northern Cyprus",
-            hudCoordinates: "MAP GRID / 607 × 390"
+            hudCoordinates: "One island / Five journeys"
         },
         ...cinematicRoutes,
         {
@@ -97,9 +107,9 @@
             rotateX: 56,
             rotateY: 0,
             lineProgress: 1,
-            hudNumber: "05 / 05",
+            hudNumber: "5 / 5",
             hudRegion: "Journey complete",
-            hudCoordinates: "5 ROUTES / 25 STOPS"
+            hudCoordinates: "Five routes / Route overview"
         }
     ];
 
@@ -351,6 +361,12 @@
         return clampedValue * clampedValue * (3 - 2 * clampedValue);
     }
 
+    function progressBetween(value, start, end) {
+        return clamp(
+            (value - start) / Math.max(end - start, 0.001)
+        );
+    }
+
     /**
      * Sticky hikâyenin sabit ölçülerini yalnızca başlangıçta ve resize
      * sonrasında okur. Scroll sırasında layout ölçümü yapılmaz.
@@ -431,7 +447,20 @@
         nextScene,
         localProgress
     ) {
-        const easedProgress = smoothStep(localProgress);
+        const mapProgress = smoothStep(
+            progressBetween(
+                localProgress,
+                routeSceneTimings.mapStart,
+                routeSceneTimings.pointActivate
+            )
+        );
+        const routeProgress = smoothStep(
+            progressBetween(
+                localProgress,
+                routeSceneTimings.routeStart,
+                routeSceneTimings.routeArrive
+            )
+        );
         const travelFactor = state.isMobile
             ? 0.44
             : state.isTablet
@@ -450,38 +479,38 @@
         const mapX = interpolate(
             currentScene.mapX,
             nextScene.mapX,
-            easedProgress
+            mapProgress
         );
         const mapY = interpolate(
             currentScene.mapY,
             nextScene.mapY,
-            easedProgress
+            mapProgress
         );
         const mapZ = interpolate(
             currentScene.mapZ,
             nextScene.mapZ,
-            easedProgress
+            mapProgress
         );
         const rawScale = interpolate(
             currentScene.scale,
             nextScene.scale,
-            easedProgress
+            mapProgress
         );
         const mapScale = 1 + (rawScale - 1) * scaleFactor;
         const rotateX = interpolate(
             currentScene.rotateX,
             nextScene.rotateX,
-            easedProgress
+            mapProgress
         );
         const rotateY = interpolate(
             currentScene.rotateY,
             nextScene.rotateY,
-            easedProgress
+            mapProgress
         );
         const lineProgress = interpolate(
             currentScene.lineProgress,
             nextScene.lineProgress,
-            easedProgress
+            routeProgress
         );
 
         state.story.style.setProperty(
@@ -514,13 +543,39 @@
         );
     }
 
-    function updateSceneContent(state, scenePosition) {
+    function updateSceneContent(
+        state,
+        currentIndex,
+        nextIndex,
+        localProgress
+    ) {
+        const isStaticScene = currentIndex === nextIndex;
+        const outgoingPhotoProgress = smoothStep(
+            progressBetween(localProgress, 0, 0.42)
+        );
+        const incomingPhotoProgress = smoothStep(
+            progressBetween(
+                localProgress,
+                routeSceneTimings.mapStart,
+                routeSceneTimings.routeArrive
+            )
+        );
+
         state.photos.forEach((photo, index) => {
             const routeSceneIndex = index + 1;
-            const distance = Math.abs(
-                scenePosition - routeSceneIndex
-            );
-            const presence = clamp(1 - distance);
+            let presence = 0;
+
+            if (
+                isStaticScene &&
+                routeSceneIndex === currentIndex
+            ) {
+                presence = 1;
+            } else if (routeSceneIndex === currentIndex) {
+                presence = 1 - outgoingPhotoProgress;
+            } else if (routeSceneIndex === nextIndex) {
+                presence = incomingPhotoProgress;
+            }
+
             const scale = 1.075 - presence * 0.075;
 
             photo.style.setProperty(
@@ -545,14 +600,43 @@
             );
         });
 
-        state.scenes.forEach((scene, index) => {
-            const distance = Math.abs(scenePosition - index);
-            const presence = clamp(1 - distance * 1.12);
-            const shift = clamp(
-                scenePosition - index,
-                -1,
-                1
+        const outgoingDuration = Math.max(
+            1 - routeSceneTimings.panelExit,
+            0.001
+        );
+        const outgoingPanelPresence = isStaticScene
+            ? 1
+            : 1 - smoothStep(
+                progressBetween(
+                    localProgress,
+                    0,
+                    outgoingDuration
+                )
             );
+        const incomingPanelPresence = isStaticScene
+            ? 1
+            : smoothStep(
+                progressBetween(
+                    localProgress,
+                    routeSceneTimings.panelEnter,
+                    routeSceneTimings.panelVisible
+                )
+            );
+
+        state.scenes.forEach((scene, index) => {
+            let presence = 0;
+            let shift = 34;
+
+            if (isStaticScene && index === currentIndex) {
+                presence = 1;
+                shift = 0;
+            } else if (index === currentIndex) {
+                presence = outgoingPanelPresence;
+                shift = (1 - presence) * -24;
+            } else if (index === nextIndex) {
+                presence = incomingPanelPresence;
+                shift = (1 - presence) * 34;
+            }
 
             scene.style.setProperty(
                 "--chapter-presence",
@@ -560,7 +644,13 @@
             );
             scene.style.setProperty(
                 "--chapter-shift",
-                `${(shift * -34).toFixed(2)}px`
+                `${shift.toFixed(2)}px`
+            );
+            scene.style.setProperty(
+                "--route-local-progress",
+                index === currentIndex || index === nextIndex
+                    ? localProgress.toFixed(4)
+                    : "0"
             );
         });
     }
@@ -632,10 +722,11 @@
             cinematicSceneStates.length - 1
         );
         const localProgress = clamp(scenePosition - currentIndex);
-        const activeIndex = Math.min(
-            Math.round(scenePosition),
-            state.scenes.length - 1
-        );
+        const activeIndex =
+            currentIndex === nextIndex ||
+            localProgress < routeSceneTimings.pointActivate
+                ? currentIndex
+                : nextIndex;
 
         state.story.style.setProperty(
             "--story-progress",
@@ -679,7 +770,12 @@
                 cinematicSceneStates[nextIndex],
                 localProgress
             );
-            updateSceneContent(state, scenePosition);
+            updateSceneContent(
+                state,
+                currentIndex,
+                nextIndex,
+                localProgress
+            );
         }
 
         setActiveCinematicRoute(state, activeIndex);
