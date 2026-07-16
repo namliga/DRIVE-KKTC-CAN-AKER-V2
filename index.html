@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="Drive KKTC multilingual route guide for Northern Cyprus.">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <title>Drive KKTC | Choose Your Language</title>
+
+    <script>
+        (() => {
+            const language = (navigator.language || "en").toLowerCase();
+            let locale = "en";
+
+            if (language.startsWith("tr")) locale = "tr";
+            else if (language.startsWith("ru")) locale = "ru";
+            else if (language.startsWith("ar")) locale = "ar";
+
+            const target = location.protocol === "file:"
+                ? `./${locale}/index.html`
+                : `./${locale}/`;
+
+            location.replace(target);
+        })();
+    </script>
+</head>
+<body>
+    <main>
+        <h1>Drive KKTC</h1>
+        <p>Choose your language:</p>
+
+        <nav aria-label="Language selection">
+            <a href="./en/index.html">English</a>
+            <a href="./tr/index.html">Türkçe</a>
+            <a href="./ru/index.html">Русский</a>
+            <a href="./ar/index.html">العربية</a>
+        </nav>
+    </main>
+</body>
+</html>
