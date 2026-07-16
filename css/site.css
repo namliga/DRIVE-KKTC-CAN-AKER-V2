@@ -4257,3 +4257,48 @@ body.cinematic-route-detail::before {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================================================
+   Route detail navigation fixes
+   ========================================================= */
+
+.cinematic-route-detail .routes-dropdown {
+    overflow: hidden;
+    border-color: rgba(255, 255, 255, 0.13);
+    background:
+        radial-gradient(
+            circle at 15% 0,
+            rgba(99, 216, 255, 0.09),
+            transparent 36%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(12, 12, 16, 0.99),
+            rgba(6, 6, 9, 0.99)
+        );
+    box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.52),
+        0 0 0 1px rgba(255, 255, 255, 0.025) inset;
+}
+
+.cinematic-route-detail .routes-dropdown a {
+    color: rgba(242, 238, 229, 0.72);
+}
+
+.cinematic-route-detail .routes-dropdown a:hover,
+.cinematic-route-detail .routes-dropdown a.is-active {
+    color: #f2eee5;
+    background: rgba(99, 216, 255, 0.11);
+}
+
+/* Recommendation arka plan yazısının dil desteği */
+
+body.cinematic-route-detail[data-locale="en"]
+    .insider-tip::before {
+    content: "RECOMMENDATION";
+}
+
+body.cinematic-route-detail[data-locale="tr"]
+    .insider-tip::before {
+    content: "ÖNERİ";
+}
