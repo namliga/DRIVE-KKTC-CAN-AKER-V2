@@ -917,7 +917,7 @@ body.cinematic-home::before {
 }
 
 .cinematic-photo--panel {
-    inset: 12% 4%;
+    inset: 2% 0;
     clip-path: inset(var(--photo-panel-inset) 0);
 }
 
@@ -1036,34 +1036,19 @@ body.cinematic-home::before {
 }
 
 .cinematic-route-line--base {
-    stroke: rgba(255, 255, 255, 0.2);
-    stroke-width: 1.4;
+    display: block;
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 1.5;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
 }
 
 .cinematic-route-line--glow,
 .cinematic-route-line--progress {
-    opacity: 0;
-}
-
-.cinematic-route-line--glow {
-    stroke: url(#cinematicRouteGradient);
-    stroke-width: 7;
-    filter: url(#cinematicRouteGlow);
-}
-
-.cinematic-route-line--progress {
-    stroke: url(#cinematicRouteGradient);
-    stroke-width: 2.6;
-}
-
-.cinematic-map-object.is-route-ready.has-route-progress
-    .cinematic-route-line--glow {
-    opacity: var(--route-glow-opacity);
-}
-
-.cinematic-map-object.is-route-ready.has-route-progress
-    .cinematic-route-line--progress {
-    opacity: 1;
+    display: none !important;
+    opacity: 0 !important;
+    filter: none !important;
 }
 
 .cinematic-map-point {
