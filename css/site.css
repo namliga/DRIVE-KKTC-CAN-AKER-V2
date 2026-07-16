@@ -1291,6 +1291,98 @@ body.cinematic-home::before {
     width: 100%;
 }
 
+/* =========================================================
+   Home opening reveal animation
+   ========================================================= */
+
+.cinematic-home .cinematic-intro-copy > * {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+    transition:
+        opacity 760ms ease,
+        transform 760ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.cinematic-home .cinematic-map-camera {
+    opacity: 0;
+    filter: blur(8px);
+    transition:
+        opacity 1100ms ease 180ms,
+        filter 1100ms ease 180ms;
+}
+
+.cinematic-home .cinematic-stage-hud {
+    opacity: 0;
+    transform: translate3d(0, -16px, 0);
+    transition:
+        opacity 650ms ease 520ms,
+        transform 650ms ease 520ms;
+}
+
+.cinematic-home .cinematic-story-meter {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+    transition:
+        opacity 650ms ease 780ms,
+        transform 650ms ease 780ms;
+}
+
+/* Sıralı giriş gecikmeleri */
+
+.cinematic-home .cinematic-intro-copy > :nth-child(1) {
+    transition-delay: 80ms;
+}
+
+.cinematic-home .cinematic-intro-copy > :nth-child(2) {
+    transition-delay: 180ms;
+}
+
+.cinematic-home .cinematic-intro-copy > :nth-child(3) {
+    transition-delay: 340ms;
+}
+
+.cinematic-home .cinematic-intro-copy > :nth-child(4) {
+    transition-delay: 500ms;
+}
+
+.cinematic-home .cinematic-intro-copy > :nth-child(5) {
+    transition-delay: 660ms;
+}
+
+/* Görünür durum */
+
+.cinematic-home.is-home-intro-visible
+    .cinematic-intro-copy > * {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.cinematic-home.is-home-intro-visible
+    .cinematic-map-camera {
+    opacity: 1;
+    filter: none;
+}
+
+.cinematic-home.is-home-intro-visible
+    .cinematic-stage-hud,
+.cinematic-home.is-home-intro-visible
+    .cinematic-story-meter {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cinematic-home .cinematic-intro-copy > *,
+    .cinematic-home .cinematic-map-camera,
+    .cinematic-home .cinematic-stage-hud,
+    .cinematic-home .cinematic-story-meter {
+        opacity: 1;
+        filter: none;
+        transform: none;
+        transition: none;
+    }
+}
+
 .cinematic-intro h1 {
     display: grid;
     width: min-content;
@@ -3557,4 +3649,611 @@ html[dir="rtl"] .route-hero h1 {
         animation-iteration-count: 1 !important;
     }
 
+}
+
+/* =========================================================
+   Cinematic route detail pages
+   ========================================================= */
+
+body.cinematic-route-detail {
+    --route-bg: #050505;
+    --route-bg-soft: #09090d;
+    --route-surface: rgba(13, 13, 18, 0.92);
+    --route-cream: #f2eee5;
+    --route-text: #ffffff;
+    --route-muted: #b8b7c2;
+    --route-blue: #63d8ff;
+    --route-violet: #a76cff;
+    --route-amber: #f0b35b;
+    --route-border: rgba(255, 255, 255, 0.14);
+
+    color: var(--route-text);
+    background:
+        radial-gradient(
+            circle at 78% 8%,
+            rgba(99, 216, 255, 0.08),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 18% 42%,
+            rgba(167, 108, 255, 0.07),
+            transparent 30%
+        ),
+        var(--route-bg);
+}
+
+body.cinematic-route-detail::before {
+    z-index: -1;
+    opacity: 0.11;
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.04) 1px,
+            transparent 1px
+        );
+    background-size: 72px 72px;
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        #000,
+        transparent 82%
+    );
+    mask-image: linear-gradient(
+        to bottom,
+        #000,
+        transparent 82%
+    );
+}
+
+.cinematic-route-detail ::selection {
+    color: #050505;
+    background: var(--route-blue);
+}
+
+/* Header */
+
+.cinematic-route-detail .site-header {
+    border-bottom-color: rgba(255, 255, 255, 0.09);
+    background: rgba(5, 5, 7, 0.88);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+}
+
+.cinematic-route-detail .brand-mark {
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99, 216, 255, 0.92),
+            rgba(167, 108, 255, 0.9)
+        );
+    box-shadow:
+        0 12px 34px rgba(99, 216, 255, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+.cinematic-route-detail .brand-text small {
+    color: var(--route-blue);
+}
+
+.cinematic-route-detail .nav-link,
+.cinematic-route-detail .routes-menu-button,
+.cinematic-route-detail .language-switcher a {
+    color: var(--route-muted);
+}
+
+.cinematic-route-detail .nav-link:hover,
+.cinematic-route-detail .routes-menu-button:hover,
+.cinematic-route-detail .nav-link.is-active {
+    color: var(--route-text);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.cinematic-route-detail .language-switcher,
+.cinematic-route-detail .menu-toggle {
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.cinematic-route-detail .language-switcher {
+    gap: 4px;
+}
+
+.cinematic-route-detail .language-switcher a {
+    min-width: 0;
+    padding-inline: 9px;
+    white-space: nowrap;
+}
+
+.cinematic-route-detail .language-switcher a:hover,
+.cinematic-route-detail .language-switcher a.is-current {
+    color: #050505;
+    background: var(--route-cream);
+}
+
+.cinematic-route-detail .header-cta {
+    border-radius: 999px;
+    color: #050505;
+    background: var(--route-cream);
+}
+
+.cinematic-route-detail .header-cta:hover {
+    background: var(--route-blue);
+    box-shadow: 0 14px 34px rgba(99, 216, 255, 0.16);
+}
+
+/* Breadcrumb */
+
+.cinematic-route-detail .breadcrumbs {
+    padding-top: 36px;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 0.72rem;
+    font-weight: 720;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.cinematic-route-detail .breadcrumbs a {
+    color: rgba(255, 255, 255, 0.68);
+}
+
+.cinematic-route-detail .breadcrumbs a:hover {
+    color: var(--route-blue);
+}
+
+/* Hero */
+
+.cinematic-route-detail .route-hero {
+    position: relative;
+    padding: clamp(58px, 8vw, 110px) 0;
+    overflow: hidden;
+    border-bottom: 1px solid var(--route-border);
+    background:
+        radial-gradient(
+            circle at 76% 42%,
+            rgba(99, 216, 255, 0.1),
+            transparent 29%
+        ),
+        radial-gradient(
+            circle at 14% 80%,
+            rgba(167, 108, 255, 0.08),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #07070a,
+            #050505
+        );
+}
+
+.cinematic-route-detail .route-hero-grid {
+    grid-template-columns:
+        minmax(0, 1.08fr)
+        minmax(380px, 0.92fr);
+    gap: clamp(46px, 7vw, 110px);
+}
+
+.cinematic-route-detail .eyebrow {
+    color: var(--route-blue);
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+}
+
+.cinematic-route-detail .route-hero h1 {
+    max-width: 780px;
+    margin: 24px 0 26px;
+    color: var(--route-cream);
+    font-size: clamp(4rem, 7vw, 7.6rem);
+    font-weight: 880;
+    line-height: 0.88;
+    letter-spacing: -0.072em;
+}
+
+.cinematic-route-detail .route-hero-description {
+    max-width: 690px;
+    color: var(--route-muted);
+    font-size: clamp(1rem, 1.4vw, 1.18rem);
+    line-height: 1.72;
+}
+
+/* Görselin kutuyu tamamen doldurması */
+
+.cinematic-route-detail .route-cover {
+    position: relative;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border: 1px solid rgba(99, 216, 255, 0.28);
+    border-radius: 0;
+    background: #0b0b10;
+    box-shadow:
+        0 34px 100px rgba(0, 0, 0, 0.52),
+        0 0 50px rgba(99, 216, 255, 0.08);
+    clip-path: polygon(
+        7% 0,
+        100% 0,
+        93% 100%,
+        0 100%
+    );
+}
+
+.cinematic-route-detail .route-cover img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+}
+
+.cinematic-route-detail .route-cover::after {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(5, 5, 7, 0.04),
+            transparent 48%,
+            rgba(5, 5, 7, 0.48)
+        ),
+        linear-gradient(
+            to top,
+            rgba(5, 5, 7, 0.36),
+            transparent 55%
+        );
+}
+
+/* Facts */
+
+.cinematic-route-detail .route-facts {
+    margin-top: 38px;
+    border-color: var(--route-border);
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.cinematic-route-detail .route-fact {
+    border-color: var(--route-border);
+}
+
+.cinematic-route-detail .route-fact small {
+    color: rgba(255, 255, 255, 0.46);
+    font-size: 0.6rem;
+    letter-spacing: 0.13em;
+}
+
+.cinematic-route-detail .route-fact strong {
+    color: var(--route-cream);
+    font-size: 0.88rem;
+}
+
+/* Content sections */
+
+.cinematic-route-detail .section {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: #050505;
+}
+
+.cinematic-route-detail .section-dark {
+    border-top: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+        radial-gradient(
+            circle at 82% 30%,
+            rgba(167, 108, 255, 0.06),
+            transparent 26%
+        ),
+        #08080b;
+}
+
+.cinematic-route-detail .route-content {
+    gap: 34px;
+}
+
+.cinematic-route-detail .route-content h2 {
+    max-width: 900px;
+    color: var(--route-cream);
+    font-size: clamp(2.8rem, 5.5vw, 6rem);
+    font-weight: 850;
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+}
+
+.cinematic-route-detail .route-intro {
+    max-width: 900px;
+    color: var(--route-muted);
+    font-size: clamp(1rem, 1.3vw, 1.14rem);
+    line-height: 1.82;
+}
+
+/* Stop cards */
+
+.cinematic-route-detail .stops-list {
+    gap: 0;
+    border-top: 1px solid var(--route-border);
+}
+
+.cinematic-route-detail .stop-card {
+    grid-template-columns: 92px minmax(0, 1fr);
+    padding: 34px 0;
+    border: 0;
+    border-bottom: 1px solid var(--route-border);
+    border-radius: 0;
+    background: transparent;
+}
+
+.cinematic-route-detail .stop-card:hover {
+    border-color: var(--route-border);
+    background:
+        linear-gradient(
+            90deg,
+            rgba(99, 216, 255, 0.045),
+            transparent 72%
+        );
+    transform: none;
+}
+
+.cinematic-route-detail .stop-number {
+    width: 64px;
+    height: 64px;
+    border: 1px solid rgba(99, 216, 255, 0.44);
+    border-radius: 50%;
+    color: var(--route-blue);
+    background: transparent;
+    font-size: 0.9rem;
+}
+
+.cinematic-route-detail .stop-content h3 {
+    color: var(--route-cream);
+    font-size: clamp(1.5rem, 2.5vw, 2.35rem);
+    letter-spacing: -0.035em;
+}
+
+.cinematic-route-detail .stop-content p {
+    max-width: 900px;
+    color: var(--route-muted);
+    line-height: 1.75;
+}
+
+/* Practical cards */
+
+.cinematic-route-detail .practical-grid {
+    gap: 1px;
+    border: 1px solid var(--route-border);
+    background: var(--route-border);
+}
+
+.cinematic-route-detail .info-card {
+    border: 0;
+    border-radius: 0;
+    background: #0a0a0e;
+}
+
+.cinematic-route-detail .info-card h3 {
+    color: var(--route-blue);
+    font-size: 0.7rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.cinematic-route-detail .info-card p,
+.cinematic-route-detail .info-card li {
+    color: var(--route-muted);
+}
+
+/* Insider tip */
+
+.cinematic-route-detail .insider-tip {
+    border-color: rgba(167, 108, 255, 0.4);
+    border-radius: 0;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(167, 108, 255, 0.12),
+            rgba(99, 216, 255, 0.035)
+        ),
+        #09090d;
+}
+
+.cinematic-route-detail .insider-tip::before {
+    content: "RECOMMENDATION";
+    color: rgba(167, 108, 255, 0.07);
+    font-size: clamp(2.4rem, 6vw, 5.5rem);
+}
+
+.cinematic-route-detail .insider-tip h3 {
+    color: #d4b9ff;
+}
+
+.cinematic-route-detail .insider-tip p {
+    color: var(--route-muted);
+}
+
+/* Map and share */
+
+.cinematic-route-detail .map-frame {
+    border-color: var(--route-border);
+    border-radius: 0;
+    background: #09090d;
+}
+
+.cinematic-route-detail .share-bar {
+    border-color: var(--route-border);
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.cinematic-route-detail .share-bar p {
+    color: var(--route-muted);
+}
+
+.cinematic-route-detail .share-button {
+    border-color: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    color: var(--route-cream);
+    background: transparent;
+}
+
+.cinematic-route-detail .share-button:hover {
+    border-color: var(--route-blue);
+    color: #050505;
+    background: var(--route-blue);
+}
+
+/* Footer */
+
+.cinematic-route-detail .site-footer {
+    margin-top: 0;
+    border-top-color: rgba(255, 255, 255, 0.1);
+    background: #050505;
+}
+
+.cinematic-route-detail .footer-routes a:hover {
+    color: var(--route-blue);
+}
+
+/* =========================================================
+   Route detail reveal animations
+   ========================================================= */
+
+.cinematic-route-detail .route-reveal {
+    opacity: 0;
+    transform: translate3d(0, 34px, 0);
+    transition:
+        opacity 720ms ease var(--route-reveal-delay, 0ms),
+        transform 720ms cubic-bezier(0.2, 0.7, 0.2, 1)
+            var(--route-reveal-delay, 0ms);
+    will-change: opacity, transform;
+}
+
+.cinematic-route-detail .route-reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+/* Hero yazısı soldan gelir */
+
+.cinematic-route-detail
+    .route-hero-grid > :first-child.route-reveal {
+    transform: translate3d(-42px, 0, 0);
+}
+
+.cinematic-route-detail
+    .route-hero-grid > :first-child.route-reveal.is-visible {
+    transform: translate3d(0, 0, 0);
+}
+
+/* Hero fotoğrafı sağdan ve hafif ölçekli gelir */
+
+.cinematic-route-detail
+    .route-cover.route-reveal {
+    opacity: 0;
+    transform: translate3d(46px, 0, 0) scale(0.97);
+}
+
+.cinematic-route-detail
+    .route-cover.route-reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Duraklar hafif soldan gelir */
+
+.cinematic-route-detail
+    .stop-card.route-reveal {
+    transform: translate3d(-28px, 24px, 0);
+}
+
+.cinematic-route-detail
+    .stop-card.route-reveal.is-visible {
+    transform: translate3d(0, 0, 0);
+}
+
+/* Bilgi kartları hafif ölçekli açılır */
+
+.cinematic-route-detail
+    .info-card.route-reveal {
+    transform: translate3d(0, 26px, 0) scale(0.975);
+}
+
+.cinematic-route-detail
+    .info-card.route-reveal.is-visible {
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Recommendation alanı soldan açılır */
+
+.cinematic-route-detail
+    .insider-tip.route-reveal {
+    transform: translate3d(-34px, 0, 0);
+}
+
+.cinematic-route-detail
+    .insider-tip.route-reveal.is-visible {
+    transform: translate3d(0, 0, 0);
+}
+
+/* Hareket azaltma tercihi */
+
+@media (prefers-reduced-motion: reduce) {
+    .cinematic-route-detail .route-reveal,
+    .cinematic-route-detail .route-reveal.is-visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* Responsive */
+
+@media (max-width: 1080px) {
+    .cinematic-route-detail .route-hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cinematic-route-detail .route-cover {
+        width: min(820px, 100%);
+    }
+}
+
+@media (max-width: 760px) {
+    .cinematic-route-detail .route-hero {
+        padding: 54px 0 70px;
+    }
+
+    .cinematic-route-detail .route-hero h1 {
+        font-size: clamp(3.4rem, 15vw, 5.4rem);
+    }
+
+    .cinematic-route-detail .route-cover {
+        aspect-ratio: 4 / 3;
+        clip-path: none;
+    }
+
+    .cinematic-route-detail .route-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cinematic-route-detail .stop-card {
+        grid-template-columns: 62px minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .cinematic-route-detail .stop-number {
+        width: 52px;
+        height: 52px;
+    }
+}
+
+@media (max-width: 520px) {
+    .cinematic-route-detail .route-facts {
+        grid-template-columns: 1fr;
+    }
+
+    .cinematic-route-detail .stop-card {
+        grid-template-columns: 1fr;
+    }
 }

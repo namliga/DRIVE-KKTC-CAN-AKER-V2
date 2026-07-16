@@ -1438,12 +1438,114 @@
         requestUpdate();
     }
 
+    function initialiseHomeIntroReveal() {
+    const homePage = document.querySelector(
+        "body.cinematic-home"
+    );
+
+    const introSection = document.querySelector(
+        ".cinematic-intro"
+    );
+
+    if (!homePage || !introSection) {
+        return;
+    }
+
+    if (reducedMotionQuery.matches) {
+        homePage.classList.add(
+            "is-home-intro-visible"
+        );
+
+        return;
+    }
+
+    window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => {
+            homePage.classList.add(
+                "is-home-intro-visible"
+            );
+        });
+    });
+}
+
+    function initialiseRouteDetailReveals() {
+    const routeDetailPage = document.querySelector(
+        ".cinematic-route-detail"
+    );
+
+    if (!routeDetailPage) {
+        return;
+    }
+
+    const revealElements = Array.from(
+        routeDetailPage.querySelectorAll(
+            [
+                ".route-hero-grid > *",
+                ".route-content > *",
+                ".stop-card",
+                ".info-card",
+                ".insider-tip",
+                ".map-frame",
+                ".share-bar"
+            ].join(",")
+        )
+    );
+
+    if (!revealElements.length) {
+        return;
+    }
+
+    revealElements.forEach((element, index) => {
+        element.classList.add("route-reveal");
+
+        element.style.setProperty(
+            "--route-reveal-delay",
+            `${Math.min(index % 6, 5) * 70}ms`
+        );
+    });
+
+    if (
+        reducedMotionQuery.matches ||
+        !("IntersectionObserver" in window)
+    ) {
+        revealElements.forEach((element) => {
+            element.classList.add("is-visible");
+        });
+
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        (entries, currentObserver) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                entry.target.classList.add("is-visible");
+                currentObserver.unobserve(entry.target);
+            });
+        },
+        {
+            root: null,
+            rootMargin: "0px 0px -8% 0px",
+            threshold: 0.12
+        }
+    );
+
+    revealElements.forEach((element) => {
+        observer.observe(element);
+    });
+}
+
     document.addEventListener("DOMContentLoaded", () => {
         initialiseAnchorLinks();
         initialiseCopyButtons();
         initialiseShareButtons();
         initialiseImageDefaults();
         initialiseCinematicStory();
+        initialiseHomeIntroReveal();
         initialiseFieldStories();
+        initialiseRouteDetailReveals();
     });
 })();
