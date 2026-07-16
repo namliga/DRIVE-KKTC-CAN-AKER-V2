@@ -7,13 +7,21 @@
 
     const routeSceneTimings = {
         mapStart: 0,
-        routeStart: 0.16,
-        routeArrive: 0.46,
-        pointActivate: 0.48,
-        panelEnter: 0.53,
-        panelVisible: 0.68,
-        panelExit: 0.84
+        routeStart: 0.08,
+        routeArrive: 0.40,
+        pointActivate: 0.44,
+        panelEnter: 0.60,
+        panelVisible: 0.72,
+        panelExit: 0.88
     };
+
+    const routeMarkerCoordinates = [
+        { x: 194, y: 190 },
+        { x: 236, y: 193 },
+        { x: 298, y: 220 },
+        { x: 432, y: 156 },
+        { x: 472, y: 147 }
+    ];
 
     const cinematicRoutes = [
         {
@@ -24,7 +32,6 @@
             scale: 1.62,
             rotateX: 52,
             rotateY: -9,
-            lineProgress: 0.06,
             hudNumber: "1 / 5",
             hudRegion: "Koruçam",
             hudCoordinates: "Western coast / Maronite village"
@@ -37,7 +44,6 @@
             scale: 1.68,
             rotateX: 50,
             rotateY: -5,
-            lineProgress: 0.18,
             hudNumber: "2 / 5",
             hudRegion: "Lapta",
             hudCoordinates: "Kyrenia west / Coastal route"
@@ -50,7 +56,6 @@
             scale: 1.75,
             rotateX: 43,
             rotateY: 0,
-            lineProgress: 0.41,
             hudNumber: "3 / 5",
             hudRegion: "Buffavento",
             hudCoordinates: "Kyrenia range / Mountain route"
@@ -63,7 +68,6 @@
             scale: 1.66,
             rotateX: 49,
             rotateY: 7,
-            lineProgress: 0.84,
             hudNumber: "4 / 5",
             hudRegion: "Kantara",
             hudCoordinates: "Eastern range / Panoramic route"
@@ -76,7 +80,6 @@
             scale: 1.72,
             rotateX: 47,
             rotateY: 10,
-            lineProgress: 1,
             hudNumber: "5 / 5",
             hudRegion: "Mehmetçik",
             hudCoordinates: "Karpas gateway / Coastal drive"
@@ -92,7 +95,6 @@
             scale: 1.05,
             rotateX: 56,
             rotateY: -8,
-            lineProgress: 0,
             hudNumber: "5 routes",
             hudRegion: "Northern Cyprus",
             hudCoordinates: "One island / Five journeys"
@@ -106,57 +108,11 @@
             scale: 0.92,
             rotateX: 56,
             rotateY: 0,
-            lineProgress: 1,
             hudNumber: "5 / 5",
             hudRegion: "Journey complete",
             hudCoordinates: "Five routes / Route overview"
         }
     ];
-
-    /**
-     * Görünürlük animasyonlarını başlatır.
-     * Yalnızca opacity ve transform kullanan .reveal öğelerini yönetir.
-     */
-    function initialiseRevealAnimations() {
-        const revealElements = document.querySelectorAll(".reveal");
-
-        if (!revealElements.length) {
-            return;
-        }
-
-        if (
-            reducedMotionQuery.matches ||
-            !("IntersectionObserver" in window)
-        ) {
-            revealElements.forEach((element) => {
-                element.classList.add("is-visible");
-            });
-
-            return;
-        }
-
-        const observer = new IntersectionObserver(
-            (entries, currentObserver) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
-
-                    entry.target.classList.add("is-visible");
-                    currentObserver.unobserve(entry.target);
-                });
-            },
-            {
-                root: null,
-                rootMargin: "0px 0px -8% 0px",
-                threshold: 0.12
-            }
-        );
-
-        revealElements.forEach((element) => {
-            observer.observe(element);
-        });
-    }
 
     /**
      * Sayfadaki iç bağlantılarda kontrollü kaydırma sağlar.
@@ -347,6 +303,370 @@
         });
     }
 
+    function getFieldGalleryItems(gallery) {
+        return Array.from(
+            gallery.querySelectorAll("[data-gallery-thumbnail]")
+        ).map((thumbnail) => ({
+            thumbnail,
+            src: thumbnail.dataset.imageSrc || "",
+            alt: thumbnail.dataset.imageAlt || "",
+            caption: thumbnail.dataset.imageCaption || ""
+        }));
+    }
+
+    function setFieldGalleryImage(
+        gallery,
+        requestedIndex,
+        animate = true
+    ) {
+        const items = getFieldGalleryItems(gallery);
+        const mainImage = gallery.querySelector(
+            "[data-gallery-main-image]"
+        );
+        const caption = gallery.querySelector(
+            "[data-gallery-caption]"
+        );
+
+        if (!items.length || !mainImage || !caption) {
+            return;
+        }
+
+        const index = (
+            (requestedIndex % items.length) + items.length
+        ) % items.length;
+        const item = items[index];
+        const swapToken = `${Date.now()}-${Math.random()}`;
+
+        gallery.dataset.activeIndex = String(index);
+        gallery.dataset.swapToken = swapToken;
+
+        items.forEach((currentItem, currentIndex) => {
+            const isActive = currentIndex === index;
+
+            currentItem.thumbnail.classList.toggle(
+                "is-active",
+                isActive
+            );
+            currentItem.thumbnail.setAttribute(
+                "aria-pressed",
+                String(isActive)
+            );
+        });
+
+        const applySelection = () => {
+            if (gallery.dataset.swapToken !== swapToken) {
+                return;
+            }
+
+            mainImage.setAttribute("src", item.src);
+            mainImage.setAttribute("alt", item.alt);
+            caption.textContent = item.caption;
+
+            window.requestAnimationFrame(() => {
+                mainImage.classList.remove("is-changing");
+            });
+        };
+
+        if (
+            animate &&
+            !reducedMotionQuery.matches &&
+            mainImage.getAttribute("src") !== item.src
+        ) {
+            mainImage.classList.add("is-changing");
+            window.setTimeout(applySelection, 130);
+        } else {
+            applySelection();
+        }
+    }
+
+    function initialiseFieldStoryReveals(section, stories) {
+        if (
+            reducedMotionQuery.matches ||
+            !("IntersectionObserver" in window)
+        ) {
+            stories.forEach((story) => {
+                story.classList.add("is-visible");
+            });
+
+            return;
+        }
+
+        section.classList.add("is-enhanced");
+
+        const observer = new IntersectionObserver(
+            (entries, currentObserver) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    entry.target.classList.add("is-visible");
+                    currentObserver.unobserve(entry.target);
+                });
+            },
+            {
+                root: null,
+                rootMargin: "0px 0px -8% 0px",
+                threshold: 0.12
+            }
+        );
+
+        stories.forEach((story) => {
+            observer.observe(story);
+        });
+
+        const revealForReducedMotion = (event) => {
+            if (!event.matches) {
+                return;
+            }
+
+            observer.disconnect();
+            section.classList.remove("is-enhanced");
+            stories.forEach((story) => {
+                story.classList.add("is-visible");
+            });
+        };
+
+        if (typeof reducedMotionQuery.addEventListener === "function") {
+            reducedMotionQuery.addEventListener(
+                "change",
+                revealForReducedMotion,
+                { once: true }
+            );
+        }
+    }
+
+    function initialiseFieldStories() {
+        const section = document.querySelector("[data-field-stories]");
+
+        if (!section) {
+            return;
+        }
+
+        const stories = Array.from(
+            section.querySelectorAll("[data-field-story]")
+        );
+        const galleries = Array.from(
+            section.querySelectorAll("[data-field-gallery]")
+        );
+
+        initialiseFieldStoryReveals(section, stories);
+
+        galleries.forEach((gallery) => {
+            const thumbnails = Array.from(
+                gallery.querySelectorAll("[data-gallery-thumbnail]")
+            );
+
+            gallery.dataset.activeIndex = "0";
+
+            thumbnails.forEach((thumbnail, index) => {
+                thumbnail.addEventListener("click", () => {
+                    setFieldGalleryImage(gallery, index);
+                });
+            });
+        });
+
+        const lightbox = document.querySelector(
+            "[data-field-lightbox]"
+        );
+
+        if (!lightbox) {
+            return;
+        }
+
+        const lightboxImage = lightbox.querySelector(
+            "[data-lightbox-image]"
+        );
+        const lightboxCaption = lightbox.querySelector(
+            "[data-lightbox-caption]"
+        );
+        const closeButton = lightbox.querySelector(
+            "[data-lightbox-close]"
+        );
+        const previousButton = lightbox.querySelector(
+            "[data-lightbox-previous]"
+        );
+        const nextButton = lightbox.querySelector(
+            "[data-lightbox-next]"
+        );
+
+        if (
+            !lightboxImage ||
+            !lightboxCaption ||
+            !closeButton ||
+            !previousButton ||
+            !nextButton
+        ) {
+            return;
+        }
+
+        let activeGallery = null;
+        let activeIndex = 0;
+        let openingTrigger = null;
+
+        const renderLightbox = () => {
+            if (!activeGallery) {
+                return;
+            }
+
+            const items = getFieldGalleryItems(activeGallery);
+
+            if (!items.length) {
+                return;
+            }
+
+            activeIndex = (
+                (activeIndex % items.length) + items.length
+            ) % items.length;
+
+            const item = items[activeIndex];
+
+            lightboxImage.setAttribute("src", item.src);
+            lightboxImage.setAttribute("alt", item.alt);
+            lightboxCaption.textContent = item.caption;
+            setFieldGalleryImage(activeGallery, activeIndex, false);
+        };
+
+        const closeLightbox = () => {
+            if (lightbox.hidden) {
+                return;
+            }
+
+            lightbox.hidden = true;
+            document.body.classList.remove("is-lightbox-open");
+            document.body.style.removeProperty(
+                "--lightbox-scrollbar-width"
+            );
+
+            if (
+                openingTrigger &&
+                document.contains(openingTrigger)
+            ) {
+                openingTrigger.focus();
+            }
+
+            activeGallery = null;
+            openingTrigger = null;
+        };
+
+        const openLightbox = (gallery, trigger) => {
+            const parsedIndex = Number.parseInt(
+                gallery.dataset.activeIndex || "0",
+                10
+            );
+            const scrollbarWidth = Math.max(
+                window.innerWidth -
+                    document.documentElement.clientWidth,
+                0
+            );
+
+            activeGallery = gallery;
+            activeIndex = Number.isFinite(parsedIndex)
+                ? parsedIndex
+                : 0;
+            openingTrigger = trigger;
+
+            document.body.style.setProperty(
+                "--lightbox-scrollbar-width",
+                `${scrollbarWidth}px`
+            );
+            document.body.classList.add("is-lightbox-open");
+            lightbox.hidden = false;
+            renderLightbox();
+
+            window.requestAnimationFrame(() => {
+                closeButton.focus();
+            });
+        };
+
+        galleries.forEach((gallery) => {
+            const opener = gallery.querySelector(
+                "[data-lightbox-open]"
+            );
+
+            if (!opener) {
+                return;
+            }
+
+            opener.addEventListener("click", () => {
+                openLightbox(gallery, opener);
+            });
+        });
+
+        closeButton.addEventListener("click", closeLightbox);
+        previousButton.addEventListener("click", () => {
+            activeIndex -= 1;
+            renderLightbox();
+        });
+        nextButton.addEventListener("click", () => {
+            activeIndex += 1;
+            renderLightbox();
+        });
+
+        lightbox.addEventListener("click", (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (lightbox.hidden) {
+                return;
+            }
+
+            if (event.key === "Escape") {
+                event.preventDefault();
+                closeLightbox();
+                return;
+            }
+
+            if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                activeIndex -= 1;
+                renderLightbox();
+                return;
+            }
+
+            if (event.key === "ArrowRight") {
+                event.preventDefault();
+                activeIndex += 1;
+                renderLightbox();
+                return;
+            }
+
+            if (event.key !== "Tab") {
+                return;
+            }
+
+            const focusableElements = Array.from(
+                lightbox.querySelectorAll(
+                    "button:not([disabled])"
+                )
+            );
+            const firstElement = focusableElements[0];
+            const lastElement =
+                focusableElements[focusableElements.length - 1];
+
+            if (!firstElement || !lastElement) {
+                return;
+            }
+
+            if (
+                event.shiftKey &&
+                document.activeElement === firstElement
+            ) {
+                event.preventDefault();
+                lastElement.focus();
+            } else if (
+                !event.shiftKey &&
+                document.activeElement === lastElement
+            ) {
+                event.preventDefault();
+                firstElement.focus();
+            }
+        });
+    }
+
     function clamp(value, minimum = 0, maximum = 1) {
         return Math.min(Math.max(value, minimum), maximum);
     }
@@ -365,6 +685,161 @@
         return clamp(
             (value - start) / Math.max(end - start, 0.001)
         );
+    }
+
+    function distanceSquared(point, target) {
+        const deltaX = point.x - target.x;
+        const deltaY = point.y - target.y;
+
+        return deltaX * deltaX + deltaY * deltaY;
+    }
+
+    /**
+     * Bir SVG koordinatına path üzerindeki en yakın uzunluğu iki aşamalı
+     * örnekleme ile bulur. Bu ölçüm yalnızca başlangıçta ve resize sonrasında
+     * çalışır; scroll sırasında getPointAtLength çağrılmaz.
+     */
+    function findClosestRouteLength(path, totalLength, target) {
+        const coarseSteps = Math.max(
+            96,
+            Math.ceil(totalLength / 2)
+        );
+        const coarseStep = totalLength / coarseSteps;
+        let bestLength = 0;
+        let bestDistance = Number.POSITIVE_INFINITY;
+
+        for (let index = 0; index <= coarseSteps; index += 1) {
+            const length = Math.min(index * coarseStep, totalLength);
+            const point = path.getPointAtLength(length);
+            const currentDistance = distanceSquared(point, target);
+
+            if (currentDistance < bestDistance) {
+                bestDistance = currentDistance;
+                bestLength = length;
+            }
+        }
+
+        let searchRadius = coarseStep;
+
+        for (let pass = 0; pass < 3; pass += 1) {
+            const searchStart = Math.max(0, bestLength - searchRadius);
+            const searchEnd = Math.min(
+                totalLength,
+                bestLength + searchRadius
+            );
+            const refinementSteps = 32;
+            const refinementStep =
+                (searchEnd - searchStart) / refinementSteps;
+
+            for (
+                let index = 0;
+                index <= refinementSteps;
+                index += 1
+            ) {
+                const length = Math.min(
+                    searchStart + index * refinementStep,
+                    totalLength
+                );
+                const point = path.getPointAtLength(length);
+                const currentDistance = distanceSquared(point, target);
+
+                if (currentDistance < bestDistance) {
+                    bestDistance = currentDistance;
+                    bestLength = length;
+                }
+            }
+
+            searchRadius = Math.max(
+                refinementStep * 2,
+                totalLength / 100000
+            );
+        }
+
+        return bestLength;
+    }
+
+    function setRouteVisibleLength(state, visibleLength) {
+        const totalLength = state.routeTotalLength;
+
+        if (!Number.isFinite(totalLength) || totalLength <= 0) {
+            return;
+        }
+
+        const safeVisibleLength = clamp(
+            visibleLength,
+            0,
+            totalLength
+        );
+
+        /*
+         * Gerçek SVG uzunluğunu 0–1 arasındaki ilerleme oranına
+         * dönüştürür. Path üzerinde pathLength="1" kullanıldığı için
+         * masaüstü scale ve 3D transform değerlerinden etkilenmez.
+         */
+        const routeRatio = safeVisibleLength / totalLength;
+
+        /*
+         * İlk değer görünür rota kısmıdır.
+         * İkinci değer bütün path'ten daha uzun bir boşluktur.
+         * Bu nedenle çizgi path sonunda tekrar başlayamaz.
+         */
+        const normalizedDashArray =
+            `${routeRatio.toFixed(6)} 2`;
+
+        state.routeLines.forEach((line) => {
+            line.style.strokeDasharray = normalizedDashArray;
+            line.style.strokeDashoffset = "0";
+        });
+
+        state.mapObject.classList.toggle(
+            "has-route-progress",
+            routeRatio > 0.0005
+        );
+
+        state.routeVisibleLength = safeVisibleLength;
+    }
+
+    function measureRouteGeometry(state) {
+        const totalLength = state.routeLine.getTotalLength();
+
+        if (!Number.isFinite(totalLength) || totalLength <= 0) {
+            return;
+        }
+
+        let previousLength = 0;
+        const markerLengths = routeMarkerCoordinates.map((target) => {
+            const closestLength = findClosestRouteLength(
+                state.routeLine,
+                totalLength,
+                target
+            );
+            const orderedLength = Math.max(
+                previousLength,
+                closestLength
+            );
+
+            previousLength = orderedLength;
+
+            return orderedLength;
+        });
+
+        state.routeTotalLength = totalLength;
+        state.routeMarkerLengths = markerLengths;
+        state.sceneRouteLengths = [
+            0,
+            ...markerLengths,
+            totalLength
+        ];
+
+        setRouteVisibleLength(
+            state,
+            state.routeReady &&
+                Number.isFinite(state.routeVisibleLength)
+                ? state.routeVisibleLength
+                : 0
+        );
+        state.mapObject.classList.add("is-route-ready");
+        state.routeReady = true;
     }
 
     /**
@@ -390,6 +865,7 @@
         state.isTablet =
             !state.isMobile &&
             window.innerWidth <= 1080;
+        measureRouteGeometry(state);
         state.needsMeasure = false;
     }
 
@@ -454,13 +930,6 @@
                 routeSceneTimings.pointActivate
             )
         );
-        const routeProgress = smoothStep(
-            progressBetween(
-                localProgress,
-                routeSceneTimings.routeStart,
-                routeSceneTimings.routeArrive
-            )
-        );
         const travelFactor = state.isMobile
             ? 0.44
             : state.isTablet
@@ -507,11 +976,6 @@
             nextScene.rotateY,
             mapProgress
         );
-        const lineProgress = interpolate(
-            currentScene.lineProgress,
-            nextScene.lineProgress,
-            routeProgress
-        );
 
         state.story.style.setProperty(
             "--map-x",
@@ -537,19 +1001,61 @@
             "--map-rotate-y",
             `${(rotateY * rotationFactor).toFixed(3)}deg`
         );
-        state.story.style.setProperty(
-            "--route-line-progress",
-            clamp(lineProgress).toFixed(4)
+    }
+
+    function updateRouteLine(
+        state,
+        currentIndex,
+        nextIndex,
+        localProgress
+    ) {
+        const routeProgress = smoothStep(
+            progressBetween(
+                localProgress,
+                routeSceneTimings.routeStart,
+                routeSceneTimings.routeArrive
+            )
         );
+        const currentLength =
+            state.sceneRouteLengths[currentIndex] || 0;
+        const targetLength =
+            state.sceneRouteLengths[nextIndex] || currentLength;
+        const visibleLength = interpolate(
+            currentLength,
+            targetLength,
+            routeProgress
+        );
+        const arrivalTolerance = Math.max(
+            state.routeTotalLength * 0.0005,
+            0.08
+        );
+        const targetReached =
+            Math.abs(targetLength - visibleLength) <= arrivalTolerance;
+
+        setRouteVisibleLength(state, visibleLength);
+
+        return {
+            routeProgress,
+            targetReached,
+            visibleLength,
+            targetLength
+        };
     }
 
     function updateSceneContent(
         state,
         currentIndex,
         nextIndex,
-        localProgress
+        localProgress,
+        routeTransition
     ) {
         const isStaticScene = currentIndex === nextIndex;
+        const targetActivated =
+            isStaticScene ||
+            (
+                routeTransition.targetReached &&
+                localProgress >= routeSceneTimings.pointActivate
+            );
         const outgoingPhotoProgress = smoothStep(
             progressBetween(localProgress, 0, 0.42)
         );
@@ -615,13 +1121,15 @@
             );
         const incomingPanelPresence = isStaticScene
             ? 1
-            : smoothStep(
-                progressBetween(
-                    localProgress,
-                    routeSceneTimings.panelEnter,
-                    routeSceneTimings.panelVisible
+            : targetActivated
+                ? smoothStep(
+                    progressBetween(
+                        localProgress,
+                        routeSceneTimings.panelEnter,
+                        routeSceneTimings.panelVisible
+                    )
                 )
-            );
+                : 0;
 
         state.scenes.forEach((scene, index) => {
             let presence = 0;
@@ -722,11 +1230,7 @@
             cinematicSceneStates.length - 1
         );
         const localProgress = clamp(scenePosition - currentIndex);
-        const activeIndex =
-            currentIndex === nextIndex ||
-            localProgress < routeSceneTimings.pointActivate
-                ? currentIndex
-                : nextIndex;
+        let routeTransition;
 
         state.story.style.setProperty(
             "--story-progress",
@@ -748,10 +1252,13 @@
             state.story.style.setProperty("--map-scale", "1");
             state.story.style.setProperty("--map-rotate-x", "0deg");
             state.story.style.setProperty("--map-rotate-y", "0deg");
-            state.story.style.setProperty(
-                "--route-line-progress",
-                "1"
-            );
+            setRouteVisibleLength(state, state.routeTotalLength);
+            routeTransition = {
+                routeProgress: 1,
+                targetReached: true,
+                visibleLength: state.routeTotalLength,
+                targetLength: state.routeTotalLength
+            };
 
             state.photos.forEach((photo) => {
                 photo.style.setProperty("--photo-presence", "0");
@@ -764,6 +1271,12 @@
                 );
             });
         } else {
+            routeTransition = updateRouteLine(
+                state,
+                currentIndex,
+                nextIndex,
+                localProgress
+            );
             updateMapTransform(
                 state,
                 cinematicSceneStates[currentIndex],
@@ -774,9 +1287,17 @@
                 state,
                 currentIndex,
                 nextIndex,
-                localProgress
+                localProgress,
+                routeTransition
             );
         }
+
+        const activeIndex =
+            currentIndex === nextIndex ||
+            localProgress < routeSceneTimings.pointActivate ||
+            !routeTransition.targetReached
+                ? currentIndex
+                : nextIndex;
 
         setActiveCinematicRoute(state, activeIndex);
     }
@@ -821,6 +1342,7 @@
 
         const state = {
             story,
+            mapObject: story.querySelector(".cinematic-map-object"),
             stage: story.querySelector("[data-cinematic-stage]"),
             track: story.querySelector("[data-cinematic-track]"),
             scenes: Array.from(
@@ -835,6 +1357,9 @@
             routeLine: story.querySelector(
                 "[data-cinematic-route-line]"
             ),
+            routeGlow: story.querySelector(
+                "[data-cinematic-route-glow]"
+            ),
             hudNumber: story.querySelector(
                 "[data-cinematic-hud-number]"
             ),
@@ -847,6 +1372,12 @@
             activeSceneIndex: -1,
             animationFrame: null,
             sceneCenters: [],
+            routeLines: [],
+            routeMarkerLengths: [],
+            sceneRouteLengths: [],
+            routeTotalLength: 0,
+            routeVisibleLength: 0,
+            routeReady: false,
             needsMeasure: true,
             reducedMotion: reducedMotionQuery.matches,
             isMobile: false,
@@ -856,9 +1387,11 @@
         };
 
         if (
+            !state.mapObject ||
             !state.stage ||
             !state.track ||
             !state.routeLine ||
+            !state.routeGlow ||
             !state.hudNumber ||
             !state.hudRegion ||
             !state.hudCoordinates ||
@@ -868,6 +1401,11 @@
         ) {
             return;
         }
+
+        state.routeLines = [
+            state.routeGlow,
+            state.routeLine
+        ];
 
         const requestUpdate = () => {
             if (state.animationFrame !== null) {
@@ -893,12 +1431,6 @@
             passive: true
         });
 
-        state.scenes.forEach((scene, index) => {
-            scene.addEventListener("focusin", () => {
-                setActiveCinematicRoute(state, index);
-            });
-        });
-
         if (document.fonts?.ready) {
             document.fonts.ready.then(requestMeasure);
         }
@@ -906,29 +1438,12 @@
         requestUpdate();
     }
 
-    function initialiseRevealDelays() {
-        const groups = document.querySelectorAll(
-            ".stops-list, .practical-grid"
-        );
-
-        groups.forEach((group) => {
-            const revealElements = group.querySelectorAll(".reveal");
-
-            revealElements.forEach((element, index) => {
-                const delay = Math.min(index * 130, 520);
-
-                element.style.transitionDelay = `${delay}ms`;
-            });
-        });
-    }
-
     document.addEventListener("DOMContentLoaded", () => {
-        initialiseRevealDelays();
-        initialiseRevealAnimations();
         initialiseAnchorLinks();
         initialiseCopyButtons();
         initialiseShareButtons();
         initialiseImageDefaults();
         initialiseCinematicStory();
+        initialiseFieldStories();
     });
 })();

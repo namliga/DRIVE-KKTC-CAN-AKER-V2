@@ -31,108 +31,58 @@
     <div data-site-header></div>
 
     <main class="cinematic-main">
-        <section class="cinematic-story"
-            id="routes"
-            aria-labelledby="cinematic-title"
-            data-cinematic-story>
-            <div class="cinematic-stage"
-                data-cinematic-stage
-                aria-hidden="true">
+        <section class="cinematic-story" id="routes" aria-labelledby="cinematic-title" data-cinematic-story>
+            <div class="cinematic-stage" data-cinematic-stage aria-hidden="true">
                 <div class="cinematic-atmosphere"></div>
 
                 <div class="cinematic-photo-stack">
-                    <figure class="cinematic-photo cinematic-photo--diagonal"
-                        data-cinematic-photo="0">
-                        <img src="../images/routes/korucam-maronite-route.webp"
-                            alt=""
-                            width="1920"
-                            height="1080"
-                            loading="eager"
-                            decoding="async">
+                    <figure class="cinematic-photo cinematic-photo--diagonal" data-cinematic-photo="0">
+                        <img src="../images/routes/korucam-maronite-route.webp" alt="" width="1920" height="1080"
+                            loading="eager" decoding="async">
                     </figure>
 
-                    <figure class="cinematic-photo cinematic-photo--coastal"
-                        data-cinematic-photo="1">
-                        <img src="../images/routes/lapta-coastal-walk.webp"
-                            alt=""
-                            width="1920"
-                            height="1080"
-                            loading="lazy"
-                            decoding="async">
+                    <figure class="cinematic-photo cinematic-photo--coastal" data-cinematic-photo="1">
+                        <img src="../images/routes/lapta-coastal-walk.webp" alt="" width="1920" height="1080"
+                            loading="lazy" decoding="async">
                     </figure>
 
-                    <figure class="cinematic-photo cinematic-photo--split"
-                        data-cinematic-photo="2">
-                        <img src="../images/routes/buffavento-mountain-route.webp"
-                            alt=""
-                            width="1920"
-                            height="1080"
-                            loading="lazy"
-                            decoding="async">
+                    <figure class="cinematic-photo cinematic-photo--split" data-cinematic-photo="2">
+                        <img src="../images/routes/buffavento-mountain-route.webp" alt="" width="1920" height="1080"
+                            loading="lazy" decoding="async">
                     </figure>
 
-                    <figure class="cinematic-photo cinematic-photo--panel"
-                        data-cinematic-photo="3">
-                        <img src="../images/routes/kantara-east-coast.webp"
-                            alt=""
-                            width="1920"
-                            height="1080"
-                            loading="lazy"
-                            decoding="async">
+                    <figure class="cinematic-photo cinematic-photo--panel" data-cinematic-photo="3">
+                        <img src="../images/routes/kantara-east-coast.webp" alt="" width="1920" height="1080"
+                            loading="lazy" decoding="async">
                     </figure>
 
-                    <figure class="cinematic-photo cinematic-photo--full"
-                        data-cinematic-photo="4">
-                        <img src="../images/routes/mehmetcik-bafra-bogaz.webp"
-                            alt=""
-                            width="1920"
-                            height="1080"
-                            loading="lazy"
-                            decoding="async">
+                    <figure class="cinematic-photo cinematic-photo--full" data-cinematic-photo="4">
+                        <img src="../images/routes/mehmetcik-bafra-bogaz.webp" alt="" width="1920" height="1080"
+                            loading="lazy" decoding="async">
                     </figure>
                 </div>
 
-                <div class="cinematic-map-camera"
-                    data-cinematic-map>
+                <div class="cinematic-map-camera" data-cinematic-map>
                     <div class="cinematic-map-object">
-                        <img class="cinematic-map-depth"
-                            src="../images/cyprus-outline.svg"
-                            alt=""
-                            width="607"
-                            height="390"
-                            fetchpriority="high">
+                        <img class="cinematic-map-depth" src="../images/cyprus-outline.svg" alt="" width="607"
+                            height="390" fetchpriority="high">
 
                         <div class="cinematic-map-surface">
-                            <img class="cinematic-map-image"
-                                src="../images/cyprus-outline.svg"
-                                alt=""
-                                width="607"
-                                height="390"
-                                fetchpriority="high">
+                            <img class="cinematic-map-image" src="../images/cyprus-outline.svg" alt="" width="607"
+                                height="390" fetchpriority="high">
 
-                            <svg class="cinematic-route-overlay"
-                                viewBox="0 110 607 390"
-                                preserveAspectRatio="xMidYMid meet"
-                                xmlns="http://www.w3.org/2000/svg">
+                            <svg class="cinematic-route-overlay" viewBox="0 110 607 390"
+                                preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
-                                    <linearGradient id="cinematicRouteGradient"
-                                        x1="194"
-                                        y1="190"
-                                        x2="472"
-                                        y2="147"
+                                    <linearGradient id="cinematicRouteGradient" x1="194" y1="190" x2="472" y2="147"
                                         gradientUnits="userSpaceOnUse">
                                         <stop offset="0" stop-color="#f0b35b" />
                                         <stop offset="0.46" stop-color="#a76cff" />
                                         <stop offset="1" stop-color="#63d8ff" />
                                     </linearGradient>
 
-                                    <filter id="cinematicRouteGlow"
-                                        x="-50%"
-                                        y="-50%"
-                                        width="200%"
-                                        height="200%">
-                                        <feGaussianBlur stdDeviation="5"
-                                            result="blur" />
+                                    <filter id="cinematicRouteGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                        <feGaussianBlur stdDeviation="5" result="blur" />
                                         <feMerge>
                                             <feMergeNode in="blur" />
                                             <feMergeNode in="SourceGraphic" />
@@ -140,158 +90,84 @@
                                     </filter>
                                 </defs>
 
-                                <g class="cinematic-route-layer"
-                                    transform="translate(0, 75)">
-                                    <path class="cinematic-route-line cinematic-route-line--base"
-                                        d="
-                                            M194 190
-                                            C207 180 223 181 236 193
-                                            C253 207 279 229 298 220
-                                            C342 200 385 167 432 156
-                                            C446 152 459 148 472 147
-                                        " />
+                                <g class="cinematic-route-layer" transform="translate(0, 75)">
+                                    <path class="cinematic-route-line cinematic-route-line--base" 
+                                    d="
+                                    M194 190
+                                    C207 180 223 181 236 193
+                                    C253 207 279 229 298 220
+                                    C342 200 385 167 432 156
+                                    C446 152 459 148 472 147
+                                    " />
 
                                     <path class="cinematic-route-line cinematic-route-line--glow"
-                                        pathLength="1"
+                                        data-cinematic-route-glow 
                                         d="
-                                            M194 190
-                                            C207 180 223 181 236 193
-                                            C253 207 279 229 298 220
-                                            C342 200 385 167 432 156
-                                            C446 152 459 148 472 147
+                                        M194 190
+                                        C207 180 223 181 236 193
+                                        C253 207 279 229 298 220
+                                        C342 200 385 167 432 156
+                                        C446 152 459 148 472 147
                                         " />
 
                                     <path class="cinematic-route-line cinematic-route-line--progress"
-                                        data-cinematic-route-line
                                         pathLength="1"
+                                        data-cinematic-route-line 
                                         d="
-                                            M194 190
-                                            C207 180 223 181 236 193
-                                            C253 207 279 229 298 220
-                                            C342 200 385 167 432 156
-                                            C446 152 459 148 472 147
+                                        M194 190
+                                        C207 180 223 181 236 193
+                                        C253 207 279 229 298 220
+                                        C342 200 385 167 432 156
+                                        C446 152 459 148 472 147
                                         " />
 
-                                    <g class="cinematic-map-point"
-                                        data-cinematic-point="0">
-                                        <circle class="cinematic-map-point__pulse"
-                                            cx="194"
-                                            cy="190"
-                                            r="8" />
-                                        <circle class="cinematic-map-point__ring"
-                                            cx="194"
-                                            cy="190"
-                                            r="7" />
-                                        <circle class="cinematic-map-point__core"
-                                            cx="194"
-                                            cy="190"
-                                            r="3.5" />
+                                    <g class="cinematic-map-point" data-cinematic-point="0">
+                                        <circle class="cinematic-map-point__pulse" cx="194" cy="190" r="8" />
+                                        <circle class="cinematic-map-point__ring" cx="194" cy="190" r="7" />
+                                        <circle class="cinematic-map-point__core" cx="194" cy="190" r="3.5" />
                                         <g class="cinematic-map-label">
-                                            <line x1="194"
-                                                y1="181"
-                                                x2="172"
-                                                y2="164" />
-                                            <text x="168"
-                                                y="159"
-                                                text-anchor="end">KORUÇAM</text>
+                                            <line x1="194" y1="181" x2="172" y2="164" />
+                                            <text x="168" y="159" text-anchor="end">KORUÇAM</text>
                                         </g>
                                     </g>
 
-                                    <g class="cinematic-map-point"
-                                        data-cinematic-point="1">
-                                        <circle class="cinematic-map-point__pulse"
-                                            cx="236"
-                                            cy="193"
-                                            r="8" />
-                                        <circle class="cinematic-map-point__ring"
-                                            cx="236"
-                                            cy="193"
-                                            r="7" />
-                                        <circle class="cinematic-map-point__core"
-                                            cx="236"
-                                            cy="193"
-                                            r="3.5" />
+                                    <g class="cinematic-map-point" data-cinematic-point="1">
+                                        <circle class="cinematic-map-point__pulse" cx="236" cy="193" r="8" />
+                                        <circle class="cinematic-map-point__ring" cx="236" cy="193" r="7" />
+                                        <circle class="cinematic-map-point__core" cx="236" cy="193" r="3.5" />
                                         <g class="cinematic-map-label">
-                                            <line x1="236"
-                                                y1="184"
-                                                x2="238"
-                                                y2="159" />
-                                            <text x="238"
-                                                y="153"
-                                                text-anchor="middle">LAPTA</text>
+                                            <line x1="236" y1="184" x2="238" y2="159" />
+                                            <text x="238" y="153" text-anchor="middle">LAPTA</text>
                                         </g>
                                     </g>
 
-                                    <g class="cinematic-map-point"
-                                        data-cinematic-point="2">
-                                        <circle class="cinematic-map-point__pulse"
-                                            cx="298"
-                                            cy="220"
-                                            r="8" />
-                                        <circle class="cinematic-map-point__ring"
-                                            cx="298"
-                                            cy="220"
-                                            r="7" />
-                                        <circle class="cinematic-map-point__core"
-                                            cx="298"
-                                            cy="220"
-                                            r="3.5" />
+                                    <g class="cinematic-map-point" data-cinematic-point="2">
+                                        <circle class="cinematic-map-point__pulse" cx="298" cy="220" r="8" />
+                                        <circle class="cinematic-map-point__ring" cx="298" cy="220" r="7" />
+                                        <circle class="cinematic-map-point__core" cx="298" cy="220" r="3.5" />
                                         <g class="cinematic-map-label">
-                                            <line x1="298"
-                                                y1="211"
-                                                x2="312"
-                                                y2="187" />
-                                            <text x="316"
-                                                y="181">BUFFAVENTO</text>
+                                            <line x1="298" y1="211" x2="312" y2="187" />
+                                            <text x="316" y="181">BUFFAVENTO</text>
                                         </g>
                                     </g>
 
-                                    <g class="cinematic-map-point"
-                                        data-cinematic-point="3">
-                                        <circle class="cinematic-map-point__pulse"
-                                            cx="432"
-                                            cy="156"
-                                            r="8" />
-                                        <circle class="cinematic-map-point__ring"
-                                            cx="432"
-                                            cy="156"
-                                            r="7" />
-                                        <circle class="cinematic-map-point__core"
-                                            cx="432"
-                                            cy="156"
-                                            r="3.5" />
+                                    <g class="cinematic-map-point" data-cinematic-point="3">
+                                        <circle class="cinematic-map-point__pulse" cx="432" cy="156" r="8" />
+                                        <circle class="cinematic-map-point__ring" cx="432" cy="156" r="7" />
+                                        <circle class="cinematic-map-point__core" cx="432" cy="156" r="3.5" />
                                         <g class="cinematic-map-label">
-                                            <line x1="432"
-                                                y1="147"
-                                                x2="420"
-                                                y2="126" />
-                                            <text x="416"
-                                                y="121"
-                                                text-anchor="end">KANTARA</text>
+                                            <line x1="432" y1="147" x2="420" y2="126" />
+                                            <text x="416" y="121" text-anchor="end">KANTARA</text>
                                         </g>
                                     </g>
 
-                                    <g class="cinematic-map-point"
-                                        data-cinematic-point="4">
-                                        <circle class="cinematic-map-point__pulse"
-                                            cx="472"
-                                            cy="147"
-                                            r="8" />
-                                        <circle class="cinematic-map-point__ring"
-                                            cx="472"
-                                            cy="147"
-                                            r="7" />
-                                        <circle class="cinematic-map-point__core"
-                                            cx="472"
-                                            cy="147"
-                                            r="3.5" />
+                                    <g class="cinematic-map-point" data-cinematic-point="4">
+                                        <circle class="cinematic-map-point__pulse" cx="472" cy="147" r="8" />
+                                        <circle class="cinematic-map-point__ring" cx="472" cy="147" r="7" />
+                                        <circle class="cinematic-map-point__core" cx="472" cy="147" r="3.5" />
                                         <g class="cinematic-map-label">
-                                            <line x1="472"
-                                                y1="138"
-                                                x2="490"
-                                                y2="119" />
-                                            <text x="494"
-                                                y="114">MEHMETÇİK</text>
+                                            <line x1="472" y1="138" x2="490" y2="119" />
+                                            <text x="494" y="114">MEHMETÇİK</text>
                                         </g>
                                     </g>
                                 </g>
@@ -316,10 +192,8 @@
                 </div>
             </div>
 
-            <div class="cinematic-track"
-                data-cinematic-track>
-                <header class="cinematic-chapter cinematic-intro"
-                    data-cinematic-scene="0">
+            <div class="cinematic-track" data-cinematic-track>
+                <header class="cinematic-chapter cinematic-intro" data-cinematic-scene="0">
                     <div class="container cinematic-chapter__inner">
                         <div class="cinematic-intro-copy">
                             <p class="cinematic-kicker">
@@ -352,8 +226,7 @@
                                 </div>
                             </dl>
 
-                            <a class="cinematic-scroll-cue"
-                                href="#route-1">
+                            <a class="cinematic-scroll-cue" href="#route-1">
                                 <span>Scroll to travel</span>
                                 <i aria-hidden="true"></i>
                             </a>
@@ -361,10 +234,8 @@
                     </div>
                 </header>
 
-                <article class="cinematic-chapter cinematic-route-scene cinematic-route-scene--korucam"
-                    id="route-1"
-                    data-cinematic-scene="1"
-                    data-cinematic-route="0">
+                <article class="cinematic-chapter cinematic-route-scene cinematic-route-scene--korucam" id="route-1"
+                    data-cinematic-scene="1" data-cinematic-route="0">
                     <div class="container cinematic-chapter__inner">
                         <div class="cinematic-route-copy">
                             <div class="cinematic-route-heading">
@@ -400,35 +271,28 @@
                                 </div>
                             </dl>
 
-                            <a class="cinematic-route-link"
-                                href="./routes/korucam-maronite-route/index.html">
+                            <a class="cinematic-route-link" href="./routes/korucam-maronite-route/index.html">
                                 View route
                                 <span aria-hidden="true">↗</span>
                             </a>
 
                             <p class="cinematic-photo-credit">
                                 Photo:
-                                <a href="https://commons.wikimedia.org/wiki/File:Kormakitis_general.jpg"
-                                    target="_blank"
+                                <a href="https://commons.wikimedia.org/wiki/File:Kormakitis_general.jpg" target="_blank"
                                     rel="license noopener noreferrer">muffinn / CC BY 2.0 · cropped</a>
                             </p>
                         </div>
 
                         <figure class="cinematic-route-media">
                             <img src="../images/routes/korucam-maronite-route.webp"
-                                alt="Koruçam village with its church, white houses and dry coastal hills"
-                                width="1920"
-                                height="1080"
-                                loading="lazy"
-                                decoding="async">
+                                alt="Koruçam village with its church, white houses and dry coastal hills" width="1920"
+                                height="1080" loading="lazy" decoding="async">
                         </figure>
                     </div>
                 </article>
 
-                <article class="cinematic-chapter cinematic-route-scene cinematic-route-scene--lapta"
-                    id="route-2"
-                    data-cinematic-scene="2"
-                    data-cinematic-route="1">
+                <article class="cinematic-chapter cinematic-route-scene cinematic-route-scene--lapta" id="route-2"
+                    data-cinematic-scene="2" data-cinematic-route="1">
                     <div class="container cinematic-chapter__inner">
                         <div class="cinematic-route-copy">
                             <div class="cinematic-route-heading">
@@ -464,8 +328,7 @@
                                 </div>
                             </dl>
 
-                            <a class="cinematic-route-link"
-                                href="./routes/lapta-village-coastal-route/index.html">
+                            <a class="cinematic-route-link" href="./routes/lapta-village-coastal-route/index.html">
                                 View route
                                 <span aria-hidden="true">↗</span>
                             </a>
@@ -473,29 +336,23 @@
                             <p class="cinematic-photo-credit">
                                 Photo:
                                 <a href="https://commons.wikimedia.org/wiki/File:Lapta_coastal_walkway_bridge.jpg"
-                                    target="_blank"
-                                    rel="license noopener noreferrer">Seksen iki yüz kırk beş / CC BY-SA 4.0 · cropped</a>
+                                    target="_blank" rel="license noopener noreferrer">Seksen iki yüz kırk beş / CC BY-SA
+                                    4.0 · cropped</a>
                             </p>
                         </div>
 
                         <figure class="cinematic-route-media">
                             <img src="../images/routes/lapta-coastal-walk.webp"
-                                alt="Lapta coastal walkway stretching across the sea at dusk"
-                                width="1920"
-                                height="1080"
-                                loading="lazy"
-                                decoding="async">
+                                alt="Lapta coastal walkway stretching across the sea at dusk" width="1920" height="1080"
+                                loading="lazy" decoding="async">
                         </figure>
                     </div>
                 </article>
 
-                <article class="cinematic-chapter cinematic-route-scene cinematic-route-scene--buffavento"
-                    id="route-3"
-                    data-cinematic-scene="3"
-                    data-cinematic-route="2">
+                <article class="cinematic-chapter cinematic-route-scene cinematic-route-scene--buffavento" id="route-3"
+                    data-cinematic-scene="3" data-cinematic-route="2">
                     <div class="container cinematic-chapter__inner">
-                        <p class="cinematic-route-ghost"
-                            aria-hidden="true">
+                        <p class="cinematic-route-ghost" aria-hidden="true">
                             Mountain route
                         </p>
 
@@ -534,35 +391,28 @@
                                 </div>
                             </dl>
 
-                            <a class="cinematic-route-link"
-                                href="./routes/buffavento-mountain-route/index.html">
+                            <a class="cinematic-route-link" href="./routes/buffavento-mountain-route/index.html">
                                 View route
                                 <span aria-hidden="true">↗</span>
                             </a>
 
                             <p class="cinematic-photo-credit">
                                 Photo:
-                                <a href="https://commons.wikimedia.org/wiki/File:Voufavento_castle.jpg"
-                                    target="_blank"
+                                <a href="https://commons.wikimedia.org/wiki/File:Voufavento_castle.jpg" target="_blank"
                                     rel="license noopener noreferrer">Dickelbers / CC BY-SA 3.0 · cropped</a>
                             </p>
                         </div>
 
                         <figure class="cinematic-route-media">
                             <img src="../images/routes/buffavento-mountain-route.webp"
-                                alt="Stone walls of Buffavento Castle rising above a rugged mountain slope"
-                                width="1920"
-                                height="1080"
-                                loading="lazy"
-                                decoding="async">
+                                alt="Stone walls of Buffavento Castle rising above a rugged mountain slope" width="1920"
+                                height="1080" loading="lazy" decoding="async">
                         </figure>
                     </div>
                 </article>
 
-                <article class="cinematic-chapter cinematic-route-scene cinematic-route-scene--kantara"
-                    id="route-4"
-                    data-cinematic-scene="4"
-                    data-cinematic-route="3">
+                <article class="cinematic-chapter cinematic-route-scene cinematic-route-scene--kantara" id="route-4"
+                    data-cinematic-scene="4" data-cinematic-route="3">
                     <div class="container cinematic-chapter__inner">
                         <div class="cinematic-route-copy">
                             <div class="cinematic-route-heading">
@@ -598,35 +448,28 @@
                                 </div>
                             </dl>
 
-                            <a class="cinematic-route-link"
-                                href="./routes/kantara-east-coast-route/index.html">
+                            <a class="cinematic-route-link" href="./routes/kantara-east-coast-route/index.html">
                                 View route
                                 <span aria-hidden="true">↗</span>
                             </a>
 
                             <p class="cinematic-photo-credit">
                                 Photo:
-                                <a href="https://commons.wikimedia.org/wiki/File:Castle_of_Kantara.jpg"
-                                    target="_blank"
+                                <a href="https://commons.wikimedia.org/wiki/File:Castle_of_Kantara.jpg" target="_blank"
                                     rel="license noopener noreferrer">George Groutas / CC BY 2.0 · cropped</a>
                             </p>
                         </div>
 
                         <figure class="cinematic-route-media">
                             <img src="../images/routes/kantara-east-coast.webp"
-                                alt="Kantara Castle walls on a rocky ridge beneath a dramatic sky"
-                                width="1920"
-                                height="1080"
-                                loading="lazy"
-                                decoding="async">
+                                alt="Kantara Castle walls on a rocky ridge beneath a dramatic sky" width="1920"
+                                height="1080" loading="lazy" decoding="async">
                         </figure>
                     </div>
                 </article>
 
-                <article class="cinematic-chapter cinematic-route-scene cinematic-route-scene--mehmetcik"
-                    id="route-5"
-                    data-cinematic-scene="5"
-                    data-cinematic-route="4">
+                <article class="cinematic-chapter cinematic-route-scene cinematic-route-scene--mehmetcik" id="route-5"
+                    data-cinematic-scene="5" data-cinematic-route="4">
                     <div class="container cinematic-chapter__inner">
                         <div class="cinematic-route-copy">
                             <div class="cinematic-route-heading">
@@ -662,8 +505,7 @@
                                 </div>
                             </dl>
 
-                            <a class="cinematic-route-link"
-                                href="./routes/mehmetcik-bafra-bogaz-route/index.html">
+                            <a class="cinematic-route-link" href="./routes/mehmetcik-bafra-bogaz-route/index.html">
                                 View route
                                 <span aria-hidden="true">↗</span>
                             </a>
@@ -671,25 +513,20 @@
                             <p class="cinematic-photo-credit">
                                 Photo:
                                 <a href="https://commons.wikimedia.org/wiki/File:Bafra_beach_North_Cyprus.jpg"
-                                    target="_blank"
-                                    rel="license noopener noreferrer">Seksen iki yüz kırk beş / CC0 · cropped</a>
+                                    target="_blank" rel="license noopener noreferrer">Seksen iki yüz kırk beş / CC0 ·
+                                    cropped</a>
                             </p>
                         </div>
 
                         <figure class="cinematic-route-media">
                             <img src="../images/routes/mehmetcik-bafra-bogaz.webp"
                                 alt="The open Bafra coastline looking across the sea toward the eastern shore"
-                                width="1920"
-                                height="1080"
-                                loading="lazy"
-                                decoding="async">
+                                width="1920" height="1080" loading="lazy" decoding="async">
                         </figure>
                     </div>
                 </article>
 
-                <section class="cinematic-chapter cinematic-finale"
-                    id="journey-complete"
-                    data-cinematic-scene="6"
+                <section class="cinematic-chapter cinematic-finale" id="journey-complete" data-cinematic-scene="6"
                     data-cinematic-final>
                     <div class="container cinematic-chapter__inner">
                         <div class="cinematic-finale-copy">
@@ -717,8 +554,7 @@
                                 </div>
                             </dl>
 
-                            <a class="cinematic-route-link cinematic-finale-link"
-                                href="#route-1">
+                            <a class="cinematic-route-link cinematic-finale-link" href="#route-1">
                                 Explore the five routes
                                 <span aria-hidden="true">↑</span>
                             </a>
@@ -728,206 +564,347 @@
             </div>
         </section>
 
-        <section class="editorial-section insider-notes"
-            aria-labelledby="insider-notes-title">
+        <section class="field-stories" id="field-stories" aria-labelledby="field-stories-title" data-field-stories>
             <div class="container">
-                <header class="editorial-heading">
-                    <p class="editorial-eyebrow">On the road</p>
-                    <h2 id="insider-notes-title">Local Insider Notes</h2>
+                <header class="field-stories__heading">
+                    <p class="field-stories__eyebrow">Beyond the map</p>
+                    <h2 id="field-stories-title">FIELD STORIES</h2>
                     <p>
-                        Small details that make each route feel different.
+                        Landscapes, culture and small details discovered along
+                        the road.
                     </p>
                 </header>
 
-                <ol class="insider-notes-list">
-                    <li class="insider-note">
-                        <span class="insider-note__number">1</span>
-                        <div>
-                            <p class="insider-note__region">
-                                Western coast / Maronite village
+                <div class="field-stories__list">
+                    <article class="field-story" data-field-story data-field-gallery>
+                        <div class="field-story__gallery">
+                            <button class="field-story__main-image" type="button" data-gallery-main data-lightbox-open>
+                                <img src="../images/routes/korucam-maronite-route.webp"
+                                    alt="Koruçam village with its church, white houses and dry coastal hills"
+                                    width="1920" height="1080" loading="lazy" decoding="async" data-gallery-main-image>
+                                <span class="field-story__expand" aria-hidden="true">View larger</span>
+                            </button>
+
+                            <div class="field-story__thumbnails" role="group" aria-label="Koruçam photo selection">
+                                <button class="field-story__thumbnail is-active" type="button" aria-pressed="true"
+                                    data-gallery-thumbnail data-gallery-index="0"
+                                    data-image-src="../images/routes/korucam-maronite-route.webp"
+                                    data-image-alt="Koruçam village with its church, white houses and dry coastal hills"
+                                    data-image-caption="Koruçam village and the dry landscapes of the western coast.">
+                                    <img src="../images/routes/korucam-maronite-route.webp"
+                                        alt="Koruçam village and western coastal hills" width="1920" height="1080"
+                                        loading="lazy" decoding="async">
+                                </button>
+
+                                <button class="field-story__thumbnail" type="button" aria-pressed="false"
+                                    data-gallery-thumbnail data-gallery-index="1"
+                                    data-image-src="../images/routes/korucam-old-saint-george-church.webp"
+                                    data-image-alt="Old Saint George Church in the Maronite village of Koruçam"
+                                    data-image-caption="Old Saint George Church, part of Koruçam’s Maronite heritage.">
+                                    <img src="../images/routes/korucam-old-saint-george-church.webp"
+                                        alt="Old Saint George Church in Koruçam" width="1920" height="1080"
+                                        loading="lazy" decoding="async">
+                                </button>
+                            </div>
+
+                            <p class="field-story__image-caption" aria-live="polite" data-gallery-caption>
+                                Koruçam village and the dry landscapes of the
+                                western coast.
                             </p>
-                            <h3>Koruçam</h3>
-                            <p>
+                        </div>
+
+                        <div class="field-story__copy">
+                            <div class="field-story__meta">
+                                <span class="field-story__number">1</span>
+                                <p>Culture / Western Coast</p>
+                            </div>
+
+                            <h3>A Maronite Village at the Edge of the Island</h3>
+
+                            <p class="field-story__description">
+                                Koruçam preserves a distinctive rhythm shaped
+                                by Maronite heritage, village streets and the
+                                landscapes of the western coast. The route
+                                combines cultural details with quiet roads
+                                leading toward the cape.
+                            </p>
+
+                            <p class="field-story__recommendation">
+                                <strong>Recommendation:</strong>
                                 Visit village bakeries early in the day, as
-                                traditional bread and pastries often sell out
+                                traditional bread and pastries may sell out
                                 before the afternoon.
                             </p>
-                        </div>
-                    </li>
 
-                    <li class="insider-note">
-                        <span class="insider-note__number">2</span>
-                        <div>
-                            <p class="insider-note__region">
-                                Kyrenia west / Coastal route
+                            <a class="field-story__link" href="./routes/korucam-maronite-route/index.html">
+                                View Route
+                                <span aria-hidden="true">↗</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="field-story" data-field-story data-field-gallery>
+                        <div class="field-story__gallery">
+                            <button class="field-story__main-image" type="button" data-gallery-main data-lightbox-open>
+                                <img src="../images/routes/lapta-coastal-walk.webp"
+                                    alt="Lapta coastal walkway stretching across the sea at dusk" width="1920"
+                                    height="1080" loading="lazy" decoding="async" data-gallery-main-image>
+                                <span class="field-story__expand" aria-hidden="true">View larger</span>
+                            </button>
+
+                            <div class="field-story__thumbnails" role="group" aria-label="Lapta photo selection">
+                                <button class="field-story__thumbnail is-active" type="button" aria-pressed="true"
+                                    data-gallery-thumbnail data-gallery-index="0"
+                                    data-image-src="../images/routes/lapta-coastal-walk.webp"
+                                    data-image-alt="Lapta coastal walkway stretching across the sea at dusk"
+                                    data-image-caption="Lapta’s long coastal promenade during the cooler evening light.">
+                                    <img src="../images/routes/lapta-coastal-walk.webp"
+                                        alt="Lapta coastal walkway at dusk" width="1920" height="1080" loading="lazy"
+                                        decoding="async">
+                                </button>
+
+                                <button class="field-story__thumbnail" type="button" aria-pressed="false"
+                                    data-gallery-thumbnail data-gallery-index="1"
+                                    data-image-src="../images/routes/lapta-village-mountain-church.webp"
+                                    data-image-alt="A Lapta church steeple framed by the Kyrenia mountains"
+                                    data-image-caption="A village church steeple beneath the Kyrenia mountain backdrop in Lapta.">
+                                    <img src="../images/routes/lapta-village-mountain-church.webp"
+                                        alt="Lapta church steeple and the Kyrenia mountains" width="1920" height="1080"
+                                        loading="lazy" decoding="async">
+                                </button>
+                            </div>
+
+                            <p class="field-story__image-caption" aria-live="polite" data-gallery-caption>
+                                Lapta’s long coastal promenade during the
+                                cooler evening light.
                             </p>
-                            <h3>Lapta</h3>
-                            <p>
-                                Time the coastal walk for the hour before
+                        </div>
+
+                        <div class="field-story__copy">
+                            <div class="field-story__meta">
+                                <span class="field-story__number">2</span>
+                                <p>Village / Coast</p>
+                            </div>
+
+                            <h3>Where the Mountains Meet the Coastal Walk</h3>
+
+                            <p class="field-story__description">
+                                Lapta brings together the historic upper
+                                village, traditional water sources and a long
+                                promenade facing the sea. It works especially
+                                well as a slow afternoon route.
+                            </p>
+
+                            <p class="field-story__recommendation">
+                                <strong>Recommendation:</strong>
+                                Begin the coastal walk during the hour before
                                 sunset, when the promenade is cooler and the
-                                Kyrenia mountains catch the last light.
+                                mountains catch the last light.
+                            </p>
+
+                            <a class="field-story__link" href="./routes/lapta-village-coastal-route/index.html">
+                                View Route
+                                <span aria-hidden="true">↗</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="field-story" data-field-story data-field-gallery>
+                        <div class="field-story__gallery">
+                            <button class="field-story__main-image" type="button" data-gallery-main data-lightbox-open>
+                                <img src="../images/routes/buffavento-mountain-route.webp"
+                                    alt="Stone walls of Buffavento Castle rising above a rugged mountain slope"
+                                    width="1920" height="1080" loading="lazy" decoding="async" data-gallery-main-image>
+                                <span class="field-story__expand" aria-hidden="true">View larger</span>
+                            </button>
+
+                            <div class="field-story__thumbnails" role="group" aria-label="Buffavento photo selection">
+                                <button class="field-story__thumbnail is-active" type="button" aria-pressed="true"
+                                    data-gallery-thumbnail data-gallery-index="0"
+                                    data-image-src="../images/routes/buffavento-mountain-route.webp"
+                                    data-image-alt="Stone walls of Buffavento Castle rising above a rugged mountain slope"
+                                    data-image-caption="Buffavento’s stone walls climbing the rugged Kyrenia ridge.">
+                                    <img src="../images/routes/buffavento-mountain-route.webp"
+                                        alt="Buffavento Castle walls on the mountain ridge" width="1920" height="1080"
+                                        loading="lazy" decoding="async">
+                                </button>
+
+                                <button class="field-story__thumbnail" type="button" aria-pressed="false"
+                                    data-gallery-thumbnail data-gallery-index="1"
+                                    data-image-src="../images/routes/buffavento-castle-ridge.webp"
+                                    data-image-alt="Buffavento Castle overlooking the surrounding Kyrenia mountain landscape"
+                                    data-image-caption="Buffavento Castle and the high mountain landscape above the northern coast.">
+                                    <img src="../images/routes/buffavento-castle-ridge.webp"
+                                        alt="Buffavento Castle and the Kyrenia mountain landscape" width="1920"
+                                        height="1080" loading="lazy" decoding="async">
+                                </button>
+                            </div>
+
+                            <p class="field-story__image-caption" aria-live="polite" data-gallery-caption>
+                                Buffavento’s stone walls climbing the rugged
+                                Kyrenia ridge.
                             </p>
                         </div>
-                    </li>
 
-                    <li class="insider-note">
-                        <span class="insider-note__number">3</span>
-                        <div>
-                            <p class="insider-note__region">
-                                Kyrenia range / Mountain route
+                        <div class="field-story__copy">
+                            <div class="field-story__meta">
+                                <span class="field-story__number">3</span>
+                                <p>Mountains / History</p>
+                            </div>
+
+                            <h3>Stone Walls Above the Northern Coast</h3>
+
+                            <p class="field-story__description">
+                                Buffavento rises high above the Kyrenia range,
+                                combining steep mountain scenery with the
+                                remains of one of the island’s most dramatic
+                                castles. The journey is as important as the
+                                viewpoint itself.
                             </p>
-                            <h3>Buffavento</h3>
-                            <p>
-                                Start early and carry water; cloud and wind
-                                conditions can change quickly near the castle
-                                ridge.
+
+                            <p class="field-story__recommendation">
+                                <strong>Recommendation:</strong>
+                                Start early and carry water, because cloud and
+                                wind conditions can change quickly near the
+                                castle ridge.
+                            </p>
+
+                            <a class="field-story__link" href="./routes/buffavento-mountain-route/index.html">
+                                View Route
+                                <span aria-hidden="true">↗</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="field-story" data-field-story data-field-gallery>
+                        <div class="field-story__gallery">
+                            <button class="field-story__main-image" type="button" data-gallery-main data-lightbox-open>
+                                <img src="../images/routes/kantara-east-coast.webp"
+                                    alt="Kantara Castle walls on a rocky ridge beneath a dramatic sky" width="1920"
+                                    height="1080" loading="lazy" decoding="async" data-gallery-main-image>
+                                <span class="field-story__expand" aria-hidden="true">View larger</span>
+                            </button>
+
+                            <div class="field-story__thumbnails" role="group" aria-label="Kantara photo selection">
+                                <button class="field-story__thumbnail is-active" type="button" aria-pressed="true"
+                                    data-gallery-thumbnail data-gallery-index="0"
+                                    data-image-src="../images/routes/kantara-east-coast.webp"
+                                    data-image-alt="Kantara Castle walls on a rocky ridge beneath a dramatic sky"
+                                    data-image-caption="Kantara Castle standing above the eastern Kyrenia range.">
+                                    <img src="../images/routes/kantara-east-coast.webp"
+                                        alt="Kantara Castle walls on the eastern ridge" width="1920" height="1080"
+                                        loading="lazy" decoding="async">
+                                </button>
+
+                                <button class="field-story__thumbnail" type="button" aria-pressed="false"
+                                    data-gallery-thumbnail data-gallery-index="1"
+                                    data-image-src="../images/routes/kantara-northern-coast-view.webp"
+                                    data-image-alt="The northern coast of Cyprus viewed from Kantara Castle"
+                                    data-image-caption="The northern coastline and mountain landscape seen from Kantara Castle.">
+                                    <img src="../images/routes/kantara-northern-coast-view.webp"
+                                        alt="Northern coast panorama from Kantara Castle" width="1920" height="1080"
+                                        loading="lazy" decoding="async">
+                                </button>
+                            </div>
+
+                            <p class="field-story__image-caption" aria-live="polite" data-gallery-caption>
+                                Kantara Castle standing above the eastern
+                                Kyrenia range.
                             </p>
                         </div>
-                    </li>
 
-                    <li class="insider-note">
-                        <span class="insider-note__number">4</span>
-                        <div>
-                            <p class="insider-note__region">
-                                Eastern range / Panoramic route
+                        <div class="field-story__copy">
+                            <div class="field-story__meta">
+                                <span class="field-story__number">4</span>
+                                <p>Castle / Panorama</p>
+                            </div>
+
+                            <h3>A View Across the Eastern Landscape</h3>
+
+                            <p class="field-story__description">
+                                Kantara offers a wide perspective across the
+                                eastern mountains, coast and inland plains.
+                                Its position makes the castle one of the
+                                strongest panoramic stops on the island.
                             </p>
-                            <h3>Kantara</h3>
-                            <p>
-                                The clearest long-distance views usually
-                                appear after windy or rainy weather has
-                                cleared the air.
+
+                            <p class="field-story__recommendation">
+                                <strong>Recommendation:</strong>
+                                The clearest long-distance views often appear
+                                after windy or rainy weather has cleared the
+                                air.
+                            </p>
+
+                            <a class="field-story__link" href="./routes/kantara-east-coast-route/index.html">
+                                View Route
+                                <span aria-hidden="true">↗</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="field-story" data-field-story data-field-gallery>
+                        <div class="field-story__gallery">
+                            <button class="field-story__main-image" type="button" data-gallery-main data-lightbox-open>
+                                <img src="../images/routes/mehmetcik-bafra-bogaz.webp"
+                                    alt="The open Bafra coastline looking across the sea toward the eastern shore"
+                                    width="1920" height="1080" loading="lazy" decoding="async" data-gallery-main-image>
+                                <span class="field-story__expand" aria-hidden="true">View larger</span>
+                            </button>
+
+                            <div class="field-story__thumbnails" role="group"
+                                aria-label="Mehmetçik, Bafra and Boğaz photo selection">
+                                <button class="field-story__thumbnail is-active" type="button" aria-pressed="true"
+                                    data-gallery-thumbnail data-gallery-index="0"
+                                    data-image-src="../images/routes/mehmetcik-bafra-bogaz.webp"
+                                    data-image-alt="The open Bafra coastline looking across the sea toward the eastern shore"
+                                    data-image-caption="The open coast near Bafra on the approach to the Karpas peninsula.">
+                                    <img src="../images/routes/mehmetcik-bafra-bogaz.webp"
+                                        alt="Open Bafra coastline and the eastern sea" width="1920" height="1080"
+                                        loading="lazy" decoding="async">
+                                </button>
+
+                                <button class="field-story__thumbnail" type="button" aria-pressed="false"
+                                    data-gallery-thumbnail data-gallery-index="1"
+                                    data-image-src="../images/routes/mehmetcik-morning-beach.webp"
+                                    data-image-alt="A quiet morning beach near Mehmetçik on the Karpas coast"
+                                    data-image-caption="Morning light on a quiet beach near Mehmetçik.">
+                                    <img src="../images/routes/mehmetcik-morning-beach.webp"
+                                        alt="Morning beach near Mehmetçik" width="1920" height="1080" loading="lazy"
+                                        decoding="async">
+                                </button>
+                            </div>
+
+                            <p class="field-story__image-caption" aria-live="polite" data-gallery-caption>
+                                The open coast near Bafra on the approach to
+                                the Karpas peninsula.
                             </p>
                         </div>
-                    </li>
 
-                    <li class="insider-note">
-                        <span class="insider-note__number">5</span>
-                        <div>
-                            <p class="insider-note__region">
-                                Karpas gateway / Coastal drive
+                        <div class="field-story__copy">
+                            <div class="field-story__meta">
+                                <span class="field-story__number">5</span>
+                                <p>Vineyards / Coast</p>
+                            </div>
+
+                            <h3>From Village Roads to the Karpas Sea</h3>
+
+                            <p class="field-story__description">
+                                This eastern route connects vineyard country,
+                                open coastal landscapes and the working
+                                harbour at Boğaz. It creates a gradual
+                                transition from village life toward the Karpas
+                                coastline.
                             </p>
-                            <h3>Mehmetçik</h3>
-                            <p>
+
+                            <p class="field-story__recommendation">
+                                <strong>Recommendation:</strong>
                                 Combine the village and vineyard area with a
                                 late lunch near Boğaz harbour instead of
                                 rushing directly toward Bafra.
                             </p>
-                        </div>
-                    </li>
-                </ol>
-            </div>
-        </section>
 
-        <section class="editorial-section route-journal"
-            aria-labelledby="route-journal-title">
-            <div class="container">
-                <header class="editorial-heading">
-                    <p class="editorial-eyebrow">Field stories</p>
-                    <h2 id="route-journal-title">From the Route Journal</h2>
-                    <p>
-                        Stories, landscapes and local culture from Northern
-                        Cyprus.
-                    </p>
-                </header>
-
-                <div class="route-journal-layout">
-                    <article class="journal-entry journal-entry--feature">
-                        <a class="journal-entry__media"
-                            href="./routes/buffavento-mountain-route/index.html"
-                            aria-label="Read the Buffavento route">
-                            <img src="../images/routes/buffavento-mountain-route.webp"
-                                alt="Buffavento Castle walls rising through the Kyrenia mountain landscape"
-                                width="1920"
-                                height="1080"
-                                loading="lazy"
-                                decoding="async">
-                        </a>
-
-                        <div class="journal-entry__copy">
-                            <p class="journal-entry__category">
-                                History & Mountains
-                            </p>
-                            <h3>
-                                <a href="./routes/buffavento-mountain-route/index.html">
-                                    Stone Castles Above the Northern Coast
-                                </a>
-                            </h3>
-                            <p>
-                                A short look at how Buffavento and Kantara
-                                shaped travel, defence and settlement across
-                                the Kyrenia range.
-                            </p>
-                            <a class="journal-entry__link"
-                                href="./routes/buffavento-mountain-route/index.html">
-                                Read the route
-                                <span aria-hidden="true">↗</span>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="journal-entry">
-                        <a class="journal-entry__media"
-                            href="./routes/korucam-maronite-route/index.html"
-                            aria-label="Read the Koruçam route">
-                            <img src="../images/routes/korucam-maronite-route.webp"
-                                alt="Koruçam village and church among the dry western hills"
-                                width="1920"
-                                height="1080"
-                                loading="lazy"
-                                decoding="async">
-                        </a>
-
-                        <div class="journal-entry__copy">
-                            <p class="journal-entry__category">
-                                Culture & Villages
-                            </p>
-                            <h3>
-                                <a href="./routes/korucam-maronite-route/index.html">
-                                    Village Life Between Koruçam and Lapta
-                                </a>
-                            </h3>
-                            <p>
-                                Maronite heritage, traditional village
-                                streets and the slower rhythm of the island’s
-                                western coast.
-                            </p>
-                            <a class="journal-entry__link"
-                                href="./routes/korucam-maronite-route/index.html">
-                                Read the route
-                                <span aria-hidden="true">↗</span>
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="journal-entry">
-                        <a class="journal-entry__media"
-                            href="./routes/mehmetcik-bafra-bogaz-route/index.html"
-                            aria-label="Read the Mehmetçik, Bafra and Boğaz route">
-                            <img src="../images/routes/mehmetcik-bafra-bogaz.webp"
-                                alt="The open Bafra coast and sea near the Karpas peninsula"
-                                width="1920"
-                                height="1080"
-                                loading="lazy"
-                                decoding="async">
-                        </a>
-
-                        <div class="journal-entry__copy">
-                            <p class="journal-entry__category">
-                                Food & Coast
-                            </p>
-                            <h3>
-                                <a href="./routes/mehmetcik-bafra-bogaz-route/index.html">
-                                    From Vineyards to the Karpas Coast
-                                </a>
-                            </h3>
-                            <p>
-                                A journey through Mehmetçik, Bafra and Boğaz
-                                where vineyards, beaches and harbour life
-                                meet.
-                            </p>
-                            <a class="journal-entry__link"
-                                href="./routes/mehmetcik-bafra-bogaz-route/index.html">
-                                Read the route
+                            <a class="field-story__link" href="./routes/mehmetcik-bafra-bogaz-route/index.html">
+                                View Route
                                 <span aria-hidden="true">↗</span>
                             </a>
                         </div>
@@ -937,6 +914,32 @@
         </section>
 
     </main>
+
+    <div class="field-lightbox" role="dialog" aria-modal="true" aria-labelledby="field-lightbox-title"
+        aria-describedby="field-lightbox-caption" hidden data-field-lightbox>
+        <div class="field-lightbox__dialog">
+            <h2 class="sr-only" id="field-lightbox-title">Field story image viewer</h2>
+
+            <button class="field-lightbox__close" type="button" aria-label="Close image viewer" data-lightbox-close>
+                <span aria-hidden="true">×</span>
+            </button>
+
+            <button class="field-lightbox__navigation field-lightbox__navigation--previous" type="button"
+                aria-label="Previous image" data-lightbox-previous>
+                <span aria-hidden="true">←</span>
+            </button>
+
+            <figure class="field-lightbox__figure">
+                <img alt="" width="1920" height="1080" data-lightbox-image>
+                <figcaption id="field-lightbox-caption" data-lightbox-caption></figcaption>
+            </figure>
+
+            <button class="field-lightbox__navigation field-lightbox__navigation--next" type="button"
+                aria-label="Next image" data-lightbox-next>
+                <span aria-hidden="true">→</span>
+            </button>
+        </div>
+    </div>
 
     <div data-site-footer></div>
 </body>
