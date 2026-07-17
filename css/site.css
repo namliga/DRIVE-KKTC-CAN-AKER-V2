@@ -1313,7 +1313,6 @@ body.cinematic-home::before {
 .cinematic-title-outline {
     color: transparent;
     -webkit-text-stroke: 1px rgba(242, 238, 229, 0.66);
-    text-stroke: 1px rgba(242, 238, 229, 0.66);
 }
 
 .cinematic-intro-line {
@@ -1452,7 +1451,6 @@ body.cinematic-home::before {
     line-height: 0.76;
     letter-spacing: -0.08em;
     -webkit-text-stroke: 1px rgba(99, 216, 255, 0.64);
-    text-stroke: 1px rgba(99, 216, 255, 0.64);
 }
 
 .cinematic-route-heading p {
