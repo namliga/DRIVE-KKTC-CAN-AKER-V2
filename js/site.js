@@ -23,6 +23,9 @@
         { x: 472, y: 147 }
     ];
 
+    const isTurkish =
+    document.body.dataset.locale === "tr";
+
     const cinematicRoutes = [
         {
             id: "korucam",
@@ -34,7 +37,9 @@
             rotateY: -9,
             hudNumber: "1 / 5",
             hudRegion: "Koruçam",
-            hudCoordinates: "Western coast / Maronite village"
+            hudCoordinates: isTurkish
+                ? "Batı sahili / Maronit köyü"
+                : "Western coast / Maronite village"
         },
         {
             id: "lapta",
@@ -46,7 +51,9 @@
             rotateY: -5,
             hudNumber: "2 / 5",
             hudRegion: "Lapta",
-            hudCoordinates: "Kyrenia west / Coastal route"
+            hudCoordinates: isTurkish
+                ? "Girne batısı / Sahil rotası"
+                : "Kyrenia west / Coastal route"
         },
         {
             id: "buffavento",
@@ -58,7 +65,9 @@
             rotateY: 0,
             hudNumber: "3 / 5",
             hudRegion: "Buffavento",
-            hudCoordinates: "Kyrenia range / Mountain route"
+            hudCoordinates: isTurkish
+                ? "Girne sıradağları / Dağ rotası"
+                : "Kyrenia range / Mountain route"
         },
         {
             id: "kantara",
@@ -70,7 +79,9 @@
             rotateY: 7,
             hudNumber: "4 / 5",
             hudRegion: "Kantara",
-            hudCoordinates: "Eastern range / Panoramic route"
+            hudCoordinates: isTurkish
+                ? "Doğu sıradağları / Panorama rotası"
+                : "Eastern range / Panoramic route"
         },
         {
             id: "mehmetcik",
@@ -82,7 +93,9 @@
             rotateY: 10,
             hudNumber: "5 / 5",
             hudRegion: "Mehmetçik",
-            hudCoordinates: "Karpas gateway / Coastal drive"
+            hudCoordinates: isTurkish
+                ? "Karpaz geçidi / Sahil sürüşü"
+                : "Karpas gateway / Coastal drive"
         }
     ];
 
@@ -95,9 +108,15 @@
             scale: 1.05,
             rotateX: 56,
             rotateY: -8,
-            hudNumber: "5 routes",
-            hudRegion: "Northern Cyprus",
-            hudCoordinates: "One island / Five journeys"
+            hudNumber: isTurkish
+                ? "5 rota"
+                : "5 routes",
+            hudRegion: isTurkish
+                ? "Kuzey Kıbrıs"
+                : "Northern Cyprus",
+            hudCoordinates: isTurkish
+                ? "Tek ada / Beş yolculuk"
+                : "One island / Five journeys"
         },
         ...cinematicRoutes,
         {
@@ -109,8 +128,12 @@
             rotateX: 56,
             rotateY: 0,
             hudNumber: "5 / 5",
-            hudRegion: "Journey complete",
-            hudCoordinates: "Five routes / Route overview"
+            hudRegion: isTurkish
+                ? "Yolculuk tamamlandı"
+                : "Journey complete",
+            hudCoordinates: isTurkish
+                ? "Beş rota / Rota özeti"
+                : "Five routes / Route overview"
         }
     ];
 
@@ -205,26 +228,155 @@
      * </button>
      */
     function initialiseCopyButtons() {
-        const copyButtons = document.querySelectorAll("[data-copy-link]");
+        const copyButtons = document.querySelectorAll(
+            "[data-copy-link]"
+        );
+
+        if (!copyButtons.length) {
+            return;
+        }
+
+        const isTurkish =
+            document.body.dataset.locale === "tr";
+
+        function getMapLocationUrl(button) {
+            const routeContent = button.closest(
+                ".route-content"
+            );
+
+            const mapFrame = routeContent?.querySelector(
+                ".map-frame iframe"
+            );
+
+            if (!mapFrame) {
+                return "";
+            }
+
+            const embedUrl = new URL(
+                mapFrame.src,
+                window.location.href
+            );
+
+            const locationQuery =
+                embedUrl.searchParams.get("q");
+
+            if (!locationQuery) {
+                return mapFrame.src;
+            }
+
+            return (
+                "https://www.google.com/maps/search/" +
+                "?api=1&query=" +
+                encodeURIComponent(locationQuery)
+            );
+        }
+
+        async function copyToClipboard(value) {
+            if (
+                navigator.clipboard &&
+                window.isSecureContext
+            ) {
+                await navigator.clipboard.writeText(
+                    value
+                );
+
+                return;
+            }
+
+            const temporaryInput =
+                document.createElement("textarea");
+
+            temporaryInput.value = value;
+            temporaryInput.setAttribute(
+                "readonly",
+                ""
+            );
+
+            temporaryInput.style.position = "fixed";
+            temporaryInput.style.opacity = "0";
+
+            document.body.appendChild(
+                temporaryInput
+            );
+
+            temporaryInput.select();
+
+            const copied =
+                document.execCommand("copy");
+
+            temporaryInput.remove();
+
+            if (!copied) {
+                throw new Error(
+                    "Clipboard copy failed."
+                );
+            }
+        }
 
         copyButtons.forEach((button) => {
-            button.addEventListener("click", async () => {
-                try {
-                    await copyCurrentUrl();
+            const defaultText = isTurkish
+                ? "Konumu kopyala"
+                : "Copy location";
 
-                    const successText =
-                        button.dataset.successText || "Link copied";
+            const successText = isTurkish
+                ? "Konum kopyalandı"
+                : "Location copied";
 
-                    showTemporaryButtonText(button, successText);
-                } catch (error) {
-                    console.error(error);
+            const errorText = isTurkish
+                ? "Kopyalama başarısız"
+                : "Copy failed";
 
-                    const errorText =
-                        button.dataset.errorText || "Copy failed";
+            button.textContent = defaultText;
 
-                    showTemporaryButtonText(button, errorText);
+            let resetTimer;
+
+            button.addEventListener(
+                "click",
+                async () => {
+                    const mapLocationUrl =
+                        getMapLocationUrl(button);
+
+                    window.clearTimeout(
+                        resetTimer
+                    );
+
+                    if (!mapLocationUrl) {
+                        button.textContent =
+                            errorText;
+
+                        resetTimer =
+                            window.setTimeout(() => {
+                                button.textContent =
+                                    defaultText;
+                            }, 1800);
+
+                        return;
+                    }
+
+                    try {
+                        await copyToClipboard(
+                            mapLocationUrl
+                        );
+
+                        button.textContent =
+                            successText;
+                    } catch (error) {
+                        console.error(
+                            "Map location could not be copied:",
+                            error
+                        );
+
+                        button.textContent =
+                            errorText;
+                    }
+
+                    resetTimer =
+                        window.setTimeout(() => {
+                            button.textContent =
+                                defaultText;
+                        }, 1800);
                 }
-            });
+            );
         });
     }
 
@@ -1438,6 +1590,180 @@
         requestUpdate();
     }
 
+    function initialiseLanguageSwitcherLinks() {
+        const routeMap = {
+            korucam: {
+                en: {
+                    folder: "routes",
+                    slug: "korucam-maronite-route"
+                },
+                tr: {
+                    folder: "rotalar",
+                    slug: "korucam-maronit-kultur-rotasi"
+                }
+            },
+
+            lapta: {
+                en: {
+                    folder: "routes",
+                    slug: "lapta-village-coastal-route"
+                },
+                tr: {
+                    folder: "rotalar",
+                    slug: "lapta-koy-ve-sahil-rotasi"
+                }
+            },
+
+            buffavento: {
+                en: {
+                    folder: "routes",
+                    slug: "buffavento-mountain-route"
+                },
+                tr: {
+                    folder: "rotalar",
+                    slug: "buffavento-dag-ve-manastir-rotasi"
+                }
+            },
+
+            kantara: {
+                en: {
+                    folder: "routes",
+                    slug: "kantara-east-coast-route"
+                },
+                tr: {
+                    folder: "rotalar",
+                    slug: "kantara-dogu-sahili-rotasi"
+                }
+            },
+
+            mehmetcik: {
+                en: {
+                    folder: "routes",
+                    slug: "mehmetcik-bafra-bogaz-route"
+                },
+                tr: {
+                    folder: "rotalar",
+                    slug: "mehmetcik-bafra-bogaz-rotasi"
+                }
+            }
+        };
+
+        const currentRoute =
+            document.body.dataset.route || "";
+
+        const currentPath =
+            window.location.pathname;
+
+        const localeMatch = currentPath.match(
+            /^(.*)\/(?:en|tr)(?:\/|$)/
+        );
+
+        const projectRoot = localeMatch
+            ? localeMatch[1]
+            : "";
+
+        function detectTargetLocale(link) {
+            const text = link.textContent
+                .trim()
+                .toLocaleLowerCase("tr");
+
+            const href =
+                link.getAttribute("href") || "";
+
+            const declaredLocale =
+                link.dataset.locale ||
+                link.getAttribute("hreflang") ||
+                link.getAttribute("lang") ||
+                "";
+
+            if (
+                declaredLocale.toLowerCase().startsWith("en") ||
+                text === "en" ||
+                text.includes("english") ||
+                /\/en(?:\/|$)/.test(href)
+            ) {
+                return "en";
+            }
+
+            if (
+                declaredLocale.toLowerCase().startsWith("tr") ||
+                text === "tr" ||
+                text.includes("türkçe") ||
+                text.includes("turkish") ||
+                text.includes("turkce") ||
+                /\/tr(?:\/|$)/.test(href)
+            ) {
+                return "tr";
+            }
+
+            return "";
+        }
+
+        function updateLanguageLinks() {
+            const languageLinks =
+                document.querySelectorAll(
+                    ".language-switcher a"
+                );
+
+            if (!languageLinks.length) {
+                return false;
+            }
+
+            languageLinks.forEach((link) => {
+                const targetLocale =
+                    detectTargetLocale(link);
+
+                if (!targetLocale) {
+                    return;
+                }
+
+                let targetPath =
+                    `${projectRoot}/${targetLocale}/index.html`;
+
+                if (
+                    currentRoute &&
+                    routeMap[currentRoute]
+                ) {
+                    const targetRoute =
+                        routeMap[currentRoute][targetLocale];
+
+                    targetPath =
+                        `${projectRoot}/${targetLocale}/` +
+                        `${targetRoute.folder}/` +
+                        `${targetRoute.slug}/index.html`;
+                }
+
+                link.href = targetPath;
+            });
+
+            return true;
+        }
+
+        if (updateLanguageLinks()) {
+            return;
+        }
+
+        const observer = new MutationObserver(() => {
+            if (!updateLanguageLinks()) {
+                return;
+            }
+
+            observer.disconnect();
+        });
+
+        observer.observe(
+            document.body,
+            {
+                childList: true,
+                subtree: true
+            }
+        );
+
+        window.setTimeout(() => {
+            observer.disconnect();
+        }, 3000);
+    }
+
     function initialiseHomeIntroReveal() {
     const homePage = document.querySelector(
         "body.cinematic-home"
@@ -1539,6 +1865,7 @@
 }
 
     document.addEventListener("DOMContentLoaded", () => {
+        initialiseLanguageSwitcherLinks();
         initialiseAnchorLinks();
         initialiseCopyButtons();
         initialiseShareButtons();

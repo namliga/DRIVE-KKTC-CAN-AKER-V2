@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+    <url>
+        <loc>https://SENIN-DOMAININ.com/en/</loc>
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="https://SENIN-DOMAININ.com/en/"
+        />
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="tr"
+            href="https://SENIN-DOMAININ.com/tr/"
+        />
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="x-default"
+            href="https://SENIN-DOMAININ.com/en/"
+        />
+    </url>
+
+    <url>
+        <loc>https://SENIN-DOMAININ.com/tr/</loc>
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="https://SENIN-DOMAININ.com/en/"
+        />
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="tr"
+            href="https://SENIN-DOMAININ.com/tr/"
+        />
+    </url>
+
+    <url>
+        <loc>https://SENIN-DOMAININ.com/en/routes/korucam-maronite-route/</loc>
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="https://SENIN-DOMAININ.com/en/routes/korucam-maronite-route/"
+        />
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="tr"
+            href="https://SENIN-DOMAININ.com/tr/rotalar/korucam-maronit-kultur-rotasi/"
+        />
+    </url>
+
+    <url>
+        <loc>https://SENIN-DOMAININ.com/tr/rotalar/korucam-maronit-kultur-rotasi/</loc>
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="https://SENIN-DOMAININ.com/en/routes/korucam-maronite-route/"
+        />
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="tr"
+            href="https://SENIN-DOMAININ.com/tr/rotalar/korucam-maronit-kultur-rotasi/"
+        />
+    </url>
+
+    <url>
+        <loc>https://SENIN-DOMAININ.com/en/routes/lapta-village-coastal-route/</loc>
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="https://SENIN-DOMAININ.com/en/routes/lapta-village-coastal-route/"
+        />
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="tr"
+            href="https://SENIN-DOMAININ.com/tr/rotalar/lapta-koy-ve-sahil-rotasi/"
+        />
+    </url>
+
+    <url>
+        <loc>https://SENIN-DOMAININ.com/tr/rotalar/lapta-koy-ve-sahil-rotasi/</loc>
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="https://SENIN-DOMAININ.com/en/routes/lapta-village-coastal-route/"
+        />
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="tr"
+            href="https://SENIN-DOMAININ.com/tr/rotalar/lapta-koy-ve-sahil-rotasi/"
+        />
+    </url>
+
+    <url>
+        <loc>https://SENIN-DOMAININ.com/en/routes/buffavento-mountain-route/</loc>
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="https://SENIN-DOMAININ.com/en/routes/buffavento-mountain-route/"
+        />
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="tr"
+            href="https://SENIN-DOMAININ.com/tr/rotalar/buffavento-dag-ve-manastir-rotasi/"
+        />
+    </url>
+
+    <url>
+        <loc>https://SENIN-DOMAININ.com/tr/rotalar/buffavento-dag-ve-manastir-rotasi/</loc>
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="https://SENIN-DOMAININ.com/en/routes/buffavento-mountain-route/"
+        />
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="tr"
+            href="https://SENIN-DOMAININ.com/tr/rotalar/buffavento-dag-ve-manastir-rotasi/"
+        />
+    </url>
+
+    <url>
+        <loc>https://SENIN-DOMAININ.com/en/routes/kantara-east-coast-route/</loc>
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="https://SENIN-DOMAININ.com/en/routes/kantara-east-coast-route/"
+        />
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="tr"
+            href="https://SENIN-DOMAININ.com/tr/rotalar/kantara-dogu-sahili-rotasi/"
+        />
+    </url>
+
+    <url>
+        <loc>https://SENIN-DOMAININ.com/tr/rotalar/kantara-dogu-sahili-rotasi/</loc>
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="https://SENIN-DOMAININ.com/en/routes/kantara-east-coast-route/"
+        />
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="tr"
+            href="https://SENIN-DOMAININ.com/tr/rotalar/kantara-dogu-sahili-rotasi/"
+        />
+    </url>
+
+    <url>
+        <loc>https://SENIN-DOMAININ.com/en/routes/mehmetcik-bafra-bogaz-route/</loc>
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="https://SENIN-DOMAININ.com/en/routes/mehmetcik-bafra-bogaz-route/"
+        />
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="tr"
+            href="https://SENIN-DOMAININ.com/tr/rotalar/mehmetcik-bafra-bogaz-rotasi/"
+        />
+    </url>
+
+    <url>
+        <loc>https://SENIN-DOMAININ.com/tr/rotalar/mehmetcik-bafra-bogaz-rotasi/</loc>
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="en"
+            href="https://SENIN-DOMAININ.com/en/routes/mehmetcik-bafra-bogaz-route/"
+        />
+
+        <xhtml:link
+            rel="alternate"
+            hreflang="tr"
+            href="https://SENIN-DOMAININ.com/tr/rotalar/mehmetcik-bafra-bogaz-rotasi/"
+        />
+    </url>
+</urlset>

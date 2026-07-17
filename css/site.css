@@ -54,22 +54,16 @@ body {
     overflow-x: hidden;
     color: var(--color-text);
     background:
-        radial-gradient(
-            circle at 12% 8%,
+        radial-gradient(circle at 12% 8%,
             rgba(67, 217, 149, 0.12),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 88% 18%,
+            transparent 30%),
+        radial-gradient(circle at 88% 18%,
             rgba(240, 189, 97, 0.08),
-            transparent 25%
-        ),
-        linear-gradient(
-            180deg,
+            transparent 25%),
+        linear-gradient(180deg,
             #06100d 0%,
             #0a1713 48%,
-            #07110e 100%
-        );
+            #07110e 100%);
     font-family:
         Inter,
         ui-sans-serif,
@@ -91,15 +85,11 @@ body::before {
     content: "";
     opacity: 0.24;
     background-image:
-        linear-gradient(
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
             rgba(255, 255, 255, 0.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.025) 1px,
-            transparent 1px
-        );
+            transparent 1px);
     background-size: 48px 48px;
     -webkit-mask-image: linear-gradient(to bottom, #000, transparent 90%);
     mask-image: linear-gradient(to bottom, #000, transparent 90%);
@@ -146,10 +136,8 @@ ol {
    ========================================================= */
 
 .container {
-    width: min(
-        calc(100% - 40px),
-        var(--container-width)
-    );
+    width: min(calc(100% - 40px),
+            var(--container-width));
     margin-inline: auto;
 }
 
@@ -269,14 +257,11 @@ ol {
     overflow: hidden;
     border-radius: 15px;
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             var(--color-primary),
-            #087b78
-        );
+            #087b78);
     box-shadow:
-        0 10px 30px
-        rgba(67, 217, 149, 0.22);
+        0 10px 30px rgba(67, 217, 149, 0.22);
 }
 
 .brand-mark::before {
@@ -494,8 +479,7 @@ ol {
 .header-cta:hover {
     background: #67e8ad;
     box-shadow:
-        0 14px 34px
-        rgba(67, 217, 149, 0.22);
+        0 14px 34px rgba(67, 217, 149, 0.22);
     transform: translateY(-2px);
 }
 
@@ -532,16 +516,12 @@ body.cinematic-home {
     --cinematic-line: rgba(255, 255, 255, 0.16);
     color: var(--cinematic-text);
     background:
-        radial-gradient(
-            circle at 78% 8%,
+        radial-gradient(circle at 78% 8%,
             rgba(99, 216, 255, 0.08),
-            transparent 27%
-        ),
-        radial-gradient(
-            circle at 18% 48%,
+            transparent 27%),
+        radial-gradient(circle at 18% 48%,
             rgba(167, 108, 255, 0.07),
-            transparent 30%
-        ),
+            transparent 30%),
         var(--cinematic-bg);
 }
 
@@ -549,26 +529,18 @@ body.cinematic-home::before {
     z-index: -1;
     opacity: 0.12;
     background-image:
-        linear-gradient(
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
             rgba(255, 255, 255, 0.045) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.045) 1px,
-            transparent 1px
-        );
+            transparent 1px);
     background-size: 72px 72px;
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        #000,
-        transparent 82%
-    );
-    mask-image: linear-gradient(
-        to bottom,
-        #000,
-        transparent 82%
-    );
+    -webkit-mask-image: linear-gradient(to bottom,
+            #000,
+            transparent 82%);
+    mask-image: linear-gradient(to bottom,
+            #000,
+            transparent 82%);
 }
 
 .cinematic-home ::selection {
@@ -580,7 +552,7 @@ body.cinematic-home::before {
     outline-color: var(--cinematic-blue);
 }
 
-.cinematic-home > [data-site-header] {
+.cinematic-home>[data-site-header] {
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -607,11 +579,9 @@ body.cinematic-home::before {
 .cinematic-home .brand-mark {
     border: 1px solid rgba(255, 255, 255, 0.13);
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(99, 216, 255, 0.9),
-            rgba(167, 108, 255, 0.88)
-        );
+            rgba(167, 108, 255, 0.88));
     box-shadow:
         0 12px 34px rgba(99, 216, 255, 0.15),
         0 0 0 1px rgba(255, 255, 255, 0.05) inset;
@@ -701,11 +671,9 @@ body.cinematic-home::before {
     isolation: isolate;
     overflow: clip;
     background:
-        radial-gradient(
-            circle at 64% 31%,
+        radial-gradient(circle at 64% 31%,
             rgba(99, 216, 255, 0.07),
-            transparent 26%
-        ),
+            transparent 26%),
         linear-gradient(180deg, #050505, #09090c 48%, #050505);
     scroll-margin-top: var(--header-height);
 }
@@ -719,12 +687,10 @@ body.cinematic-home::before {
     overflow: clip;
     pointer-events: none;
     background:
-        radial-gradient(
-            ellipse at 54% 54%,
+        radial-gradient(ellipse at 54% 54%,
             rgba(28, 29, 37, 0.95),
             rgba(5, 5, 5, 0.94) 54%,
-            #050505 84%
-        );
+            #050505 84%);
 }
 
 .cinematic-stage::before,
@@ -738,30 +704,24 @@ body.cinematic-home::before {
 
 .cinematic-stage::before {
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             rgba(5, 5, 5, 0.76),
             transparent 30%,
             transparent 72%,
-            rgba(5, 5, 5, 0.54)
-        ),
-        linear-gradient(
-            180deg,
+            rgba(5, 5, 5, 0.54)),
+        linear-gradient(180deg,
             rgba(5, 5, 5, 0.14),
             transparent 42%,
-            rgba(5, 5, 5, 0.76)
-        );
+            rgba(5, 5, 5, 0.76));
 }
 
 .cinematic-stage::after {
     opacity: 0.12;
     background-image:
-        repeating-linear-gradient(
-            0deg,
+        repeating-linear-gradient(0deg,
             transparent 0,
             transparent 3px,
-            rgba(255, 255, 255, 0.035) 4px
-        );
+            rgba(255, 255, 255, 0.035) 4px);
     mix-blend-mode: soft-light;
 }
 
@@ -771,21 +731,15 @@ body.cinematic-home::before {
     z-index: 0;
     opacity: 0.8;
     background:
-        radial-gradient(
-            circle at 68% 42%,
+        radial-gradient(circle at 68% 42%,
             rgba(99, 216, 255, 0.17),
-            transparent 20%
-        ),
-        radial-gradient(
-            circle at 45% 62%,
+            transparent 20%),
+        radial-gradient(circle at 45% 62%,
             rgba(167, 108, 255, 0.13),
-            transparent 27%
-        ),
-        radial-gradient(
-            circle at 18% 78%,
+            transparent 27%),
+        radial-gradient(circle at 18% 78%,
             rgba(240, 179, 91, 0.07),
-            transparent 17%
-        );
+            transparent 17%);
 }
 
 .cinematic-photo-stack {
@@ -846,33 +800,25 @@ body.cinematic-home::before {
 
 .cinematic-photo::before {
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             rgba(5, 5, 5, 0.82),
             rgba(5, 5, 5, 0.18) 48%,
-            rgba(5, 5, 5, 0.66)
-        ),
-        linear-gradient(
-            180deg,
+            rgba(5, 5, 5, 0.66)),
+        linear-gradient(180deg,
             rgba(5, 5, 5, 0.12),
             transparent 48%,
-            rgba(5, 5, 5, 0.82)
-        );
+            rgba(5, 5, 5, 0.82));
 }
 
 .cinematic-photo::after {
     opacity: 0.24;
     background:
-        radial-gradient(
-            ellipse at center,
+        radial-gradient(ellipse at center,
             transparent 30%,
-            rgba(5, 5, 5, 0.72) 100%
-        ),
-        repeating-radial-gradient(
-            circle at 20% 30%,
+            rgba(5, 5, 5, 0.72) 100%),
+        repeating-radial-gradient(circle at 20% 30%,
             rgba(255, 255, 255, 0.09) 0 0.5px,
-            transparent 0.8px 3px
-        );
+            transparent 0.8px 3px);
     mix-blend-mode: soft-light;
 }
 
@@ -886,12 +832,10 @@ body.cinematic-home::before {
 }
 
 .cinematic-photo--diagonal {
-    clip-path: polygon(
-        0 0,
-        var(--photo-reveal) 0,
-        calc(var(--photo-reveal) - 13%) 100%,
-        0 100%
-    );
+    clip-path: polygon(0 0,
+            var(--photo-reveal) 0,
+            calc(var(--photo-reveal) - 13%) 100%,
+            0 100%);
 }
 
 .cinematic-photo--diagonal img {
@@ -899,12 +843,7 @@ body.cinematic-home::before {
 }
 
 .cinematic-photo--coastal {
-    clip-path: inset(
-        0
-        calc(100% - var(--photo-reveal))
-        0
-        0
-    );
+    clip-path: inset(0 calc(100% - var(--photo-reveal)) 0 0);
 }
 
 .cinematic-photo--coastal::after {
@@ -933,18 +872,14 @@ body.cinematic-home::before {
 
 .cinematic-photo--full::before {
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             rgba(5, 5, 5, 0.72),
             rgba(5, 5, 5, 0.2) 50%,
-            rgba(5, 5, 5, 0.48)
-        ),
-        linear-gradient(
-            180deg,
+            rgba(5, 5, 5, 0.48)),
+        linear-gradient(180deg,
             rgba(5, 5, 5, 0.16),
             rgba(5, 5, 5, 0.2) 48%,
-            rgba(5, 5, 5, 0.88)
-        );
+            rgba(5, 5, 5, 0.88));
 }
 
 .cinematic-map-camera {
@@ -965,14 +900,9 @@ body.cinematic-home::before {
     width: 100%;
     height: 100%;
     transform:
-        translate3d(
-            var(--map-x),
+        translate3d(var(--map-x),
             var(--map-y),
-            var(--map-z)
-        )
-        rotateX(var(--map-rotate-x))
-        rotateY(var(--map-rotate-y))
-        scale(var(--map-scale));
+            var(--map-z)) rotateX(var(--map-rotate-x)) rotateY(var(--map-rotate-y)) scale(var(--map-scale));
     transform-origin: center;
     transform-style: preserve-3d;
     will-change: transform;
@@ -989,12 +919,7 @@ body.cinematic-home::before {
 .cinematic-map-depth {
     opacity: 0.24;
     filter:
-        grayscale(1)
-        brightness(0.78)
-        sepia(1)
-        hue-rotate(205deg)
-        saturate(5)
-        blur(1.5px);
+        grayscale(1) brightness(0.78) sepia(1) hue-rotate(205deg) saturate(5) blur(1.5px);
     transform: translate3d(0, 24px, -58px) scale(0.995);
 }
 
@@ -1002,8 +927,7 @@ body.cinematic-home::before {
     transform: translateZ(14px);
     transform-style: preserve-3d;
     filter:
-        drop-shadow(0 46px 44px rgba(0, 0, 0, 0.62))
-        drop-shadow(0 0 32px rgba(99, 216, 255, 0.13));
+        drop-shadow(0 46px 44px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 32px rgba(99, 216, 255, 0.13));
 }
 
 .cinematic-map-image,
@@ -1017,10 +941,7 @@ body.cinematic-home::before {
 .cinematic-map-image {
     opacity: 0.68;
     filter:
-        grayscale(1)
-        brightness(1.16)
-        contrast(1.15)
-        saturate(0);
+        grayscale(1) brightness(1.16) contrast(1.15) saturate(0);
 }
 
 .cinematic-route-overlay {
@@ -1095,18 +1016,15 @@ body.cinematic-home::before {
     opacity: 1;
 }
 
-.cinematic-map-point.is-active
-    .cinematic-map-point__ring {
+.cinematic-map-point.is-active .cinematic-map-point__ring {
     transform: scale(1.45);
 }
 
-.cinematic-map-point.is-active
-    .cinematic-map-point__core {
+.cinematic-map-point.is-active .cinematic-map-point__core {
     transform: scale(1.48);
 }
 
-.cinematic-map-point.is-active
-    .cinematic-map-point__pulse {
+.cinematic-map-point.is-active .cinematic-map-point__pulse {
     animation: cinematic-radar 1.9s ease-out infinite;
 }
 
@@ -1114,8 +1032,7 @@ body.cinematic-home::before {
     color: var(--cinematic-blue);
 }
 
-.cinematic-map-point.is-complete
-    .cinematic-map-point__ring {
+.cinematic-map-point.is-complete .cinematic-map-point__ring {
     fill: rgba(99, 216, 255, 0.12);
 }
 
@@ -1218,11 +1135,9 @@ body.cinematic-home::before {
     width: 100%;
     height: 100%;
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             var(--cinematic-violet),
-            var(--cinematic-blue)
-        );
+            var(--cinematic-blue));
     transform: scaleX(var(--story-progress));
     transform-origin: left;
 }
@@ -1260,8 +1175,7 @@ body.cinematic-home::before {
     padding-bottom: clamp(42px, 7vh, 76px);
 }
 
-.cinematic-story.is-enhanced
-    .cinematic-chapter__inner {
+.cinematic-story.is-enhanced .cinematic-chapter__inner {
     opacity: var(--chapter-presence);
     transform: translate3d(0, var(--chapter-shift), 0);
     will-change: opacity, transform;
@@ -1295,7 +1209,7 @@ body.cinematic-home::before {
    Home opening reveal animation
    ========================================================= */
 
-.cinematic-home .cinematic-intro-copy > * {
+.cinematic-home .cinematic-intro-copy>* {
     opacity: 0;
     transform: translate3d(0, 30px, 0);
     transition:
@@ -1329,50 +1243,47 @@ body.cinematic-home::before {
 
 /* Sıralı giriş gecikmeleri */
 
-.cinematic-home .cinematic-intro-copy > :nth-child(1) {
+.cinematic-home .cinematic-intro-copy> :nth-child(1) {
     transition-delay: 80ms;
 }
 
-.cinematic-home .cinematic-intro-copy > :nth-child(2) {
+.cinematic-home .cinematic-intro-copy> :nth-child(2) {
     transition-delay: 180ms;
 }
 
-.cinematic-home .cinematic-intro-copy > :nth-child(3) {
+.cinematic-home .cinematic-intro-copy> :nth-child(3) {
     transition-delay: 340ms;
 }
 
-.cinematic-home .cinematic-intro-copy > :nth-child(4) {
+.cinematic-home .cinematic-intro-copy> :nth-child(4) {
     transition-delay: 500ms;
 }
 
-.cinematic-home .cinematic-intro-copy > :nth-child(5) {
+.cinematic-home .cinematic-intro-copy> :nth-child(5) {
     transition-delay: 660ms;
 }
 
 /* Görünür durum */
 
-.cinematic-home.is-home-intro-visible
-    .cinematic-intro-copy > * {
+.cinematic-home.is-home-intro-visible .cinematic-intro-copy>* {
     opacity: 1;
     transform: translate3d(0, 0, 0);
 }
 
-.cinematic-home.is-home-intro-visible
-    .cinematic-map-camera {
+.cinematic-home.is-home-intro-visible .cinematic-map-camera {
     opacity: 1;
     filter: none;
 }
 
-.cinematic-home.is-home-intro-visible
-    .cinematic-stage-hud,
-.cinematic-home.is-home-intro-visible
-    .cinematic-story-meter {
+.cinematic-home.is-home-intro-visible .cinematic-stage-hud,
+.cinematic-home.is-home-intro-visible .cinematic-story-meter {
     opacity: 1;
     transform: translate3d(0, 0, 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .cinematic-home .cinematic-intro-copy > *,
+
+    .cinematic-home .cinematic-intro-copy>*,
     .cinematic-home .cinematic-map-camera,
     .cinematic-home .cinematic-stage-hud,
     .cinematic-home .cinematic-story-meter {
@@ -1434,7 +1345,7 @@ body.cinematic-home::before {
     padding: 14px 18px 15px 0;
 }
 
-.cinematic-intro-facts div + div {
+.cinematic-intro-facts div+div {
     padding-left: 18px;
     border-left: 1px solid var(--cinematic-line);
 }
@@ -1517,12 +1428,10 @@ body.cinematic-home::before {
     padding: clamp(24px, 3vw, 44px);
     border-left: 1px solid rgba(99, 216, 255, 0.36);
     background:
-        linear-gradient(
-            102deg,
+        linear-gradient(102deg,
             rgba(4, 4, 6, 0.98),
             rgba(5, 5, 8, 0.93) 66%,
-            rgba(5, 5, 8, 0.74)
-        );
+            rgba(5, 5, 8, 0.74));
     box-shadow:
         28px 24px 80px rgba(0, 0, 0, 0.28),
         -18px 0 60px rgba(0, 0, 0, 0.18);
@@ -1597,7 +1506,7 @@ body.cinematic-home::before {
     padding: 13px 12px 14px 0;
 }
 
-.cinematic-route-meta div + div {
+.cinematic-route-meta div+div {
     padding-left: 12px;
     border-left: 1px solid var(--cinematic-line);
 }
@@ -1673,12 +1582,10 @@ body.cinematic-home::before {
     inset: 0;
     content: "";
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(5, 5, 5, 0.08),
             transparent 48%,
-            rgba(5, 5, 5, 0.52)
-        );
+            rgba(5, 5, 5, 0.52));
 }
 
 .cinematic-route-media img {
@@ -1700,28 +1607,23 @@ body.cinematic-home::before {
     border: 0;
 }
 
-.cinematic-route-scene--korucam
-    .cinematic-route-copy {
+.cinematic-route-scene--korucam .cinematic-route-copy {
     grid-column: 2;
 }
 
-.cinematic-route-scene--lapta
-    .cinematic-chapter__inner {
+.cinematic-route-scene--lapta .cinematic-chapter__inner {
     align-items: end;
 }
 
-.cinematic-route-scene--lapta
-    .cinematic-route-copy {
+.cinematic-route-scene--lapta .cinematic-route-copy {
     grid-column: 1;
 }
 
-.cinematic-route-scene--lapta
-    .cinematic-route-number {
+.cinematic-route-scene--lapta .cinematic-route-number {
     -webkit-text-stroke-color: rgba(99, 216, 255, 0.82);
 }
 
-.cinematic-route-scene--buffavento
-    .cinematic-route-copy {
+.cinematic-route-scene--buffavento .cinematic-route-copy {
     grid-column: 1;
 }
 
@@ -1741,38 +1643,31 @@ body.cinematic-home::before {
     writing-mode: vertical-rl;
 }
 
-.cinematic-route-scene--kantara
-    .cinematic-chapter__inner {
+.cinematic-route-scene--kantara .cinematic-chapter__inner {
     align-items: start;
     padding-top: clamp(70px, 12vh, 130px);
 }
 
-.cinematic-route-scene--kantara
-    .cinematic-route-copy {
+.cinematic-route-scene--kantara .cinematic-route-copy {
     grid-column: 1;
     border-left-color: rgba(167, 108, 255, 0.5);
 }
 
-.cinematic-route-scene--kantara
-    .cinematic-route-heading p span {
+.cinematic-route-scene--kantara .cinematic-route-heading p span {
     color: #d4b9ff;
 }
 
-.cinematic-route-scene--mehmetcik
-    .cinematic-chapter__inner {
+.cinematic-route-scene--mehmetcik .cinematic-chapter__inner {
     align-items: end;
 }
 
-.cinematic-route-scene--mehmetcik
-    .cinematic-route-copy {
+.cinematic-route-scene--mehmetcik .cinematic-route-copy {
     grid-column: 2;
     background:
-        linear-gradient(
-            102deg,
+        linear-gradient(102deg,
             rgba(4, 4, 6, 0.98),
             rgba(5, 5, 8, 0.94) 68%,
-            rgba(5, 5, 8, 0.76)
-        );
+            rgba(5, 5, 8, 0.76));
 }
 
 .cinematic-finale .cinematic-chapter__inner {
@@ -1819,7 +1714,7 @@ body.cinematic-home::before {
     padding: 14px;
 }
 
-.cinematic-finale-facts div + div {
+.cinematic-finale-facts div+div {
     border-left: 1px solid var(--cinematic-line);
 }
 
@@ -1860,16 +1755,12 @@ body.cinematic-home::before {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--cinematic-text);
     background:
-        radial-gradient(
-            ellipse at 48% 0,
+        radial-gradient(ellipse at 48% 0,
             rgba(99, 216, 255, 0.1),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 90% 31%,
+            transparent 30%),
+        radial-gradient(circle at 90% 31%,
             rgba(167, 108, 255, 0.08),
-            transparent 24%
-        ),
+            transparent 24%),
         linear-gradient(180deg, #08080b, #060609 60%, #050507);
 }
 
@@ -1881,13 +1772,11 @@ body.cinematic-home::before {
     height: 1px;
     content: "";
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             transparent,
             var(--cinematic-blue),
             var(--cinematic-violet),
-            transparent
-        );
+            transparent);
     transform: translateX(-50%);
 }
 
@@ -1920,7 +1809,7 @@ body.cinematic-home::before {
     text-wrap: balance;
 }
 
-.field-stories__heading > p:last-child {
+.field-stories__heading>p:last-child {
     max-width: 470px;
     margin: 0;
     color: var(--cinematic-muted);
@@ -1988,17 +1877,13 @@ body.cinematic-home::before {
     pointer-events: none;
     content: "";
     background:
-        linear-gradient(
-            180deg,
+        linear-gradient(180deg,
             rgba(5, 5, 7, 0.05),
             transparent 54%,
-            rgba(5, 5, 7, 0.48)
-        ),
-        radial-gradient(
-            ellipse at center,
+            rgba(5, 5, 7, 0.48)),
+        radial-gradient(ellipse at center,
             transparent 42%,
-            rgba(5, 5, 7, 0.34)
-        );
+            rgba(5, 5, 7, 0.34));
 }
 
 .field-story__main-image img {
@@ -2178,11 +2063,9 @@ body.cinematic-home::before {
     height: 1px;
     content: "";
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             var(--cinematic-blue),
-            var(--cinematic-violet)
-        );
+            var(--cinematic-violet));
     transition: width var(--transition-fast);
 }
 
@@ -2300,8 +2183,7 @@ body.is-lightbox-open {
 
 .field-lightbox__close:hover {
     transform:
-        translateY(calc(-100% - 14px))
-        scale(1.04);
+        translateY(calc(-100% - 14px)) scale(1.04);
 }
 
 .field-lightbox__navigation--previous {
@@ -2328,7 +2210,7 @@ body.is-lightbox-open {
         gap: 24px;
     }
 
-    .field-stories__heading > p:last-child {
+    .field-stories__heading>p:last-child {
         max-width: 640px;
     }
 
@@ -2430,6 +2312,7 @@ body.is-lightbox-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .field-stories.is-enhanced .field-story,
     .field-stories.is-enhanced .field-story.is-visible {
         opacity: 1;
@@ -2499,13 +2382,11 @@ body.is-lightbox-open {
     .cinematic-stage::before {
         z-index: 7;
         background:
-            linear-gradient(
-                180deg,
+            linear-gradient(180deg,
                 rgba(5, 5, 5, 0.08),
                 rgba(5, 5, 5, 0.12) 44%,
                 rgba(5, 5, 5, 0.78) 73%,
-                rgba(5, 5, 5, 0.97)
-            );
+                rgba(5, 5, 5, 0.97));
     }
 
     .cinematic-atmosphere {
@@ -2520,19 +2401,15 @@ body.is-lightbox-open {
 
     .cinematic-photo::before {
         background:
-            linear-gradient(
-                180deg,
+            linear-gradient(180deg,
                 rgba(5, 5, 5, 0.1),
                 rgba(5, 5, 5, 0.12) 48%,
                 rgba(5, 5, 5, 0.78) 78%,
-                rgba(5, 5, 5, 0.96)
-            ),
-            linear-gradient(
-                90deg,
+                rgba(5, 5, 5, 0.96)),
+            linear-gradient(90deg,
                 rgba(5, 5, 5, 0.28),
                 transparent 55%,
-                rgba(5, 5, 5, 0.2)
-            );
+                rgba(5, 5, 5, 0.2));
     }
 
     .cinematic-photo::after {
@@ -2578,8 +2455,7 @@ body.is-lightbox-open {
 
     .cinematic-map-surface {
         filter:
-            drop-shadow(0 24px 28px rgba(0, 0, 0, 0.48))
-            drop-shadow(0 0 14px rgba(99, 216, 255, 0.08));
+            drop-shadow(0 24px 28px rgba(0, 0, 0, 0.48)) drop-shadow(0 0 14px rgba(99, 216, 255, 0.08));
     }
 
     .cinematic-map-image {
@@ -2620,18 +2496,15 @@ body.is-lightbox-open {
         filter: drop-shadow(0 0 2px currentColor);
     }
 
-    .cinematic-map-point.is-active
-        .cinematic-map-point__ring {
+    .cinematic-map-point.is-active .cinematic-map-point__ring {
         transform: scale(1.18);
     }
 
-    .cinematic-map-point.is-active
-        .cinematic-map-point__core {
+    .cinematic-map-point.is-active .cinematic-map-point__core {
         transform: scale(1.28);
     }
 
-    .cinematic-map-point.is-active
-        .cinematic-map-point__pulse {
+    .cinematic-map-point.is-active .cinematic-map-point__pulse {
         animation-name: cinematic-radar-mobile;
     }
 
@@ -2645,8 +2518,7 @@ body.is-lightbox-open {
         max-width: 58vw;
     }
 
-    .cinematic-stage-hud
-        [data-cinematic-hud-coordinates] {
+    .cinematic-stage-hud [data-cinematic-hud-coordinates] {
         display: none;
     }
 
@@ -2657,7 +2529,7 @@ body.is-lightbox-open {
         width: auto;
     }
 
-    .cinematic-story-meter > span {
+    .cinematic-story-meter>span {
         display: none;
     }
 
@@ -2697,7 +2569,7 @@ body.is-lightbox-open {
         padding: 11px 8px 12px 0;
     }
 
-    .cinematic-intro-facts div + div {
+    .cinematic-intro-facts div+div {
         padding-left: 8px;
     }
 
@@ -2728,12 +2600,10 @@ body.is-lightbox-open {
         max-width: none;
         padding: 18px 16px 16px;
         background:
-            linear-gradient(
-                180deg,
+            linear-gradient(180deg,
                 rgba(5, 5, 7, 0.68),
                 rgba(5, 5, 7, 0.93) 28%,
-                rgba(5, 5, 7, 0.98)
-            );
+                rgba(5, 5, 7, 0.98));
         box-shadow: 0 -28px 70px rgba(0, 0, 0, 0.24);
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
@@ -2772,7 +2642,7 @@ body.is-lightbox-open {
         padding: 10px 6px 11px 0;
     }
 
-    .cinematic-route-meta div + div {
+    .cinematic-route-meta div+div {
         padding-left: 7px;
     }
 
@@ -2801,21 +2671,17 @@ body.is-lightbox-open {
         display: none;
     }
 
-    .cinematic-route-scene--kantara
-        .cinematic-chapter__inner {
+    .cinematic-route-scene--kantara .cinematic-chapter__inner {
         align-items: flex-end;
         padding-top: 32px;
     }
 
-    .cinematic-route-scene--mehmetcik
-        .cinematic-route-copy {
+    .cinematic-route-scene--mehmetcik .cinematic-route-copy {
         background:
-            linear-gradient(
-                180deg,
+            linear-gradient(180deg,
                 rgba(5, 5, 7, 0.68),
                 rgba(5, 5, 7, 0.94) 28%,
-                rgba(5, 5, 7, 0.98)
-            );
+                rgba(5, 5, 7, 0.98));
     }
 
     .cinematic-route-media {
@@ -2906,9 +2772,9 @@ body.is-lightbox-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .cinematic-scroll-cue i::after,
-    .cinematic-map-point.is-active
-        .cinematic-map-point__pulse {
+    .cinematic-map-point.is-active .cinematic-map-point__pulse {
         animation: none;
     }
 
@@ -2945,8 +2811,7 @@ body.is-lightbox-open {
     }
 
     .cinematic-chapter__inner,
-    .cinematic-story.is-enhanced
-        .cinematic-chapter__inner {
+    .cinematic-story.is-enhanced .cinematic-chapter__inner {
         min-height: 0;
         padding-top: 76px;
         padding-bottom: 76px;
@@ -2962,12 +2827,10 @@ body.is-lightbox-open {
         margin-top: 24px;
         overflow: hidden;
         clip: auto;
-        clip-path: polygon(
-            8% 0,
-            100% 0,
-            92% 100%,
-            0 100%
-        );
+        clip-path: polygon(8% 0,
+                100% 0,
+                92% 100%,
+                0 100%);
         white-space: normal;
     }
 }
@@ -2987,23 +2850,19 @@ body.is-lightbox-open {
     margin-top: 0;
 }
 
-.cinematic-story.is-reduced-motion
-    .cinematic-photo-stack {
+.cinematic-story.is-reduced-motion .cinematic-photo-stack {
     display: none;
 }
 
-.cinematic-story.is-reduced-motion
-    .cinematic-map-object {
+.cinematic-story.is-reduced-motion .cinematic-map-object {
     transform: none !important;
 }
 
-.cinematic-story.is-reduced-motion
-    .cinematic-chapter {
+.cinematic-story.is-reduced-motion .cinematic-chapter {
     min-height: 0;
 }
 
-.cinematic-story.is-reduced-motion
-    .cinematic-chapter__inner {
+.cinematic-story.is-reduced-motion .cinematic-chapter__inner {
     min-height: 0;
     padding-top: 76px;
     padding-bottom: 76px;
@@ -3011,8 +2870,7 @@ body.is-lightbox-open {
     transform: none;
 }
 
-.cinematic-story.is-reduced-motion
-    .cinematic-route-media {
+.cinematic-story.is-reduced-motion .cinematic-route-media {
     position: relative;
     width: 100%;
     height: auto;
@@ -3020,12 +2878,10 @@ body.is-lightbox-open {
     margin-top: 24px;
     overflow: hidden;
     clip: auto;
-    clip-path: polygon(
-        8% 0,
-        100% 0,
-        92% 100%,
-        0 100%
-    );
+    clip-path: polygon(8% 0,
+            100% 0,
+            92% 100%,
+            0 100%);
     white-space: normal;
 }
 
@@ -3057,8 +2913,7 @@ body.is-lightbox-open {
 .route-hero-grid {
     display: grid;
     grid-template-columns:
-        minmax(0, 1fr)
-        minmax(360px, 0.82fr);
+        minmax(0, 1fr) minmax(360px, 0.82fr);
     align-items: center;
     gap: 58px;
 }
@@ -3084,11 +2939,9 @@ body.is-lightbox-open {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-large);
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             #23483e,
-            #0c6d70
-        );
+            #0c6d70);
     box-shadow: var(--shadow-large);
 }
 
@@ -3103,11 +2956,9 @@ body.is-lightbox-open {
     inset: 0;
     content: "";
     background:
-        linear-gradient(
-            to top,
+        linear-gradient(to top,
             rgba(6, 16, 13, 0.74),
-            transparent 55%
-        );
+            transparent 55%);
 }
 
 .route-facts {
@@ -3247,7 +3098,7 @@ body.is-lightbox-open {
     padding-inline-start: 20px;
 }
 
-.info-card li + li {
+.info-card li+li {
     margin-top: 8px;
 }
 
@@ -3262,11 +3113,9 @@ body.is-lightbox-open {
     border: 1px solid rgba(240, 189, 97, 0.34);
     border-radius: var(--radius-medium);
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             var(--color-accent-soft),
-            transparent
-        ),
+            transparent),
         var(--color-surface-soft);
 }
 
@@ -3321,11 +3170,9 @@ body.is-lightbox-open {
     padding: 30px;
     text-align: center;
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(67, 217, 149, 0.12),
-            transparent
-        ),
+            transparent),
         var(--color-surface-soft);
 }
 
@@ -3396,8 +3243,7 @@ body.is-lightbox-open {
 .footer-grid {
     display: grid;
     grid-template-columns:
-        minmax(0, 1fr)
-        minmax(280px, 0.8fr);
+        minmax(0, 1fr) minmax(280px, 0.8fr);
     padding-top: 62px;
     padding-bottom: 45px;
     gap: 60px;
@@ -3524,10 +3370,8 @@ html[dir="rtl"] .route-hero h1 {
 
 @media (max-width: 760px) {
     .container {
-        width: min(
-            calc(100% - 28px),
-            var(--container-width)
-        );
+        width: min(calc(100% - 28px),
+                var(--container-width));
     }
 
     .section {
@@ -3669,16 +3513,12 @@ body.cinematic-route-detail {
 
     color: var(--route-text);
     background:
-        radial-gradient(
-            circle at 78% 8%,
+        radial-gradient(circle at 78% 8%,
             rgba(99, 216, 255, 0.08),
-            transparent 27%
-        ),
-        radial-gradient(
-            circle at 18% 42%,
+            transparent 27%),
+        radial-gradient(circle at 18% 42%,
             rgba(167, 108, 255, 0.07),
-            transparent 30%
-        ),
+            transparent 30%),
         var(--route-bg);
 }
 
@@ -3686,26 +3526,18 @@ body.cinematic-route-detail::before {
     z-index: -1;
     opacity: 0.11;
     background-image:
-        linear-gradient(
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
             rgba(255, 255, 255, 0.04) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.04) 1px,
-            transparent 1px
-        );
+            transparent 1px);
     background-size: 72px 72px;
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        #000,
-        transparent 82%
-    );
-    mask-image: linear-gradient(
-        to bottom,
-        #000,
-        transparent 82%
-    );
+    -webkit-mask-image: linear-gradient(to bottom,
+            #000,
+            transparent 82%);
+    mask-image: linear-gradient(to bottom,
+            #000,
+            transparent 82%);
 }
 
 .cinematic-route-detail ::selection {
@@ -3725,11 +3557,9 @@ body.cinematic-route-detail::before {
 .cinematic-route-detail .brand-mark {
     border: 1px solid rgba(255, 255, 255, 0.13);
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(99, 216, 255, 0.92),
-            rgba(167, 108, 255, 0.9)
-        );
+            rgba(167, 108, 255, 0.9));
     box-shadow:
         0 12px 34px rgba(99, 216, 255, 0.15),
         0 0 0 1px rgba(255, 255, 255, 0.05) inset;
@@ -3812,27 +3642,20 @@ body.cinematic-route-detail::before {
     overflow: hidden;
     border-bottom: 1px solid var(--route-border);
     background:
-        radial-gradient(
-            circle at 76% 42%,
+        radial-gradient(circle at 76% 42%,
             rgba(99, 216, 255, 0.1),
-            transparent 29%
-        ),
-        radial-gradient(
-            circle at 14% 80%,
+            transparent 29%),
+        radial-gradient(circle at 14% 80%,
             rgba(167, 108, 255, 0.08),
-            transparent 30%
-        ),
-        linear-gradient(
-            180deg,
+            transparent 30%),
+        linear-gradient(180deg,
             #07070a,
-            #050505
-        );
+            #050505);
 }
 
 .cinematic-route-detail .route-hero-grid {
     grid-template-columns:
-        minmax(0, 1.08fr)
-        minmax(380px, 0.92fr);
+        minmax(0, 1.08fr) minmax(380px, 0.92fr);
     gap: clamp(46px, 7vw, 110px);
 }
 
@@ -3873,12 +3696,10 @@ body.cinematic-route-detail::before {
     box-shadow:
         0 34px 100px rgba(0, 0, 0, 0.52),
         0 0 50px rgba(99, 216, 255, 0.08);
-    clip-path: polygon(
-        7% 0,
-        100% 0,
-        93% 100%,
-        0 100%
-    );
+    clip-path: polygon(7% 0,
+            100% 0,
+            93% 100%,
+            0 100%);
 }
 
 .cinematic-route-detail .route-cover img {
@@ -3893,17 +3714,13 @@ body.cinematic-route-detail::before {
 
 .cinematic-route-detail .route-cover::after {
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(5, 5, 7, 0.04),
             transparent 48%,
-            rgba(5, 5, 7, 0.48)
-        ),
-        linear-gradient(
-            to top,
+            rgba(5, 5, 7, 0.48)),
+        linear-gradient(to top,
             rgba(5, 5, 7, 0.36),
-            transparent 55%
-        );
+            transparent 55%);
 }
 
 /* Facts */
@@ -3941,11 +3758,9 @@ body.cinematic-route-detail::before {
     border-top: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     background:
-        radial-gradient(
-            circle at 82% 30%,
+        radial-gradient(circle at 82% 30%,
             rgba(167, 108, 255, 0.06),
-            transparent 26%
-        ),
+            transparent 26%),
         #08080b;
 }
 
@@ -3988,11 +3803,9 @@ body.cinematic-route-detail::before {
 .cinematic-route-detail .stop-card:hover {
     border-color: var(--route-border);
     background:
-        linear-gradient(
-            90deg,
+        linear-gradient(90deg,
             rgba(99, 216, 255, 0.045),
-            transparent 72%
-        );
+            transparent 72%);
     transform: none;
 }
 
@@ -4050,11 +3863,9 @@ body.cinematic-route-detail::before {
     border-color: rgba(167, 108, 255, 0.4);
     border-radius: 0;
     background:
-        linear-gradient(
-            120deg,
+        linear-gradient(120deg,
             rgba(167, 108, 255, 0.12),
-            rgba(99, 216, 255, 0.035)
-        ),
+            rgba(99, 216, 255, 0.035)),
         #09090d;
 }
 
@@ -4124,8 +3935,7 @@ body.cinematic-route-detail::before {
     transform: translate3d(0, 34px, 0);
     transition:
         opacity 720ms ease var(--route-reveal-delay, 0ms),
-        transform 720ms cubic-bezier(0.2, 0.7, 0.2, 1)
-            var(--route-reveal-delay, 0ms);
+        transform 720ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--route-reveal-delay, 0ms);
     will-change: opacity, transform;
 }
 
@@ -4136,69 +3946,60 @@ body.cinematic-route-detail::before {
 
 /* Hero yazısı soldan gelir */
 
-.cinematic-route-detail
-    .route-hero-grid > :first-child.route-reveal {
+.cinematic-route-detail .route-hero-grid> :first-child.route-reveal {
     transform: translate3d(-42px, 0, 0);
 }
 
-.cinematic-route-detail
-    .route-hero-grid > :first-child.route-reveal.is-visible {
+.cinematic-route-detail .route-hero-grid> :first-child.route-reveal.is-visible {
     transform: translate3d(0, 0, 0);
 }
 
 /* Hero fotoğrafı sağdan ve hafif ölçekli gelir */
 
-.cinematic-route-detail
-    .route-cover.route-reveal {
+.cinematic-route-detail .route-cover.route-reveal {
     opacity: 0;
     transform: translate3d(46px, 0, 0) scale(0.97);
 }
 
-.cinematic-route-detail
-    .route-cover.route-reveal.is-visible {
+.cinematic-route-detail .route-cover.route-reveal.is-visible {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
 }
 
 /* Duraklar hafif soldan gelir */
 
-.cinematic-route-detail
-    .stop-card.route-reveal {
+.cinematic-route-detail .stop-card.route-reveal {
     transform: translate3d(-28px, 24px, 0);
 }
 
-.cinematic-route-detail
-    .stop-card.route-reveal.is-visible {
+.cinematic-route-detail .stop-card.route-reveal.is-visible {
     transform: translate3d(0, 0, 0);
 }
 
 /* Bilgi kartları hafif ölçekli açılır */
 
-.cinematic-route-detail
-    .info-card.route-reveal {
+.cinematic-route-detail .info-card.route-reveal {
     transform: translate3d(0, 26px, 0) scale(0.975);
 }
 
-.cinematic-route-detail
-    .info-card.route-reveal.is-visible {
+.cinematic-route-detail .info-card.route-reveal.is-visible {
     transform: translate3d(0, 0, 0) scale(1);
 }
 
 /* Recommendation alanı soldan açılır */
 
-.cinematic-route-detail
-    .insider-tip.route-reveal {
+.cinematic-route-detail .insider-tip.route-reveal {
     transform: translate3d(-34px, 0, 0);
 }
 
-.cinematic-route-detail
-    .insider-tip.route-reveal.is-visible {
+.cinematic-route-detail .insider-tip.route-reveal.is-visible {
     transform: translate3d(0, 0, 0);
 }
 
 /* Hareket azaltma tercihi */
 
 @media (prefers-reduced-motion: reduce) {
+
     .cinematic-route-detail .route-reveal,
     .cinematic-route-detail .route-reveal.is-visible {
         opacity: 1;
@@ -4266,16 +4067,12 @@ body.cinematic-route-detail::before {
     overflow: hidden;
     border-color: rgba(255, 255, 255, 0.13);
     background:
-        radial-gradient(
-            circle at 15% 0,
+        radial-gradient(circle at 15% 0,
             rgba(99, 216, 255, 0.09),
-            transparent 36%
-        ),
-        linear-gradient(
-            180deg,
+            transparent 36%),
+        linear-gradient(180deg,
             rgba(12, 12, 16, 0.99),
-            rgba(6, 6, 9, 0.99)
-        );
+            rgba(6, 6, 9, 0.99));
     box-shadow:
         0 28px 80px rgba(0, 0, 0, 0.52),
         0 0 0 1px rgba(255, 255, 255, 0.025) inset;
@@ -4293,12 +4090,127 @@ body.cinematic-route-detail::before {
 
 /* Recommendation arka plan yazısının dil desteği */
 
-body.cinematic-route-detail[data-locale="en"]
-    .insider-tip::before {
+body.cinematic-route-detail[data-locale="en"] .insider-tip::before {
     content: "RECOMMENDATION";
 }
 
-body.cinematic-route-detail[data-locale="tr"]
-    .insider-tip::before {
+body.cinematic-route-detail[data-locale="tr"] .insider-tip::before {
     content: "ÖNERİ";
+}
+
+/* =========================================================
+   Mobile finale alignment
+   ========================================================= */
+
+@media (max-width: 700px) {
+    .cinematic-home .cinematic-finale .cinematic-chapter__inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .cinematic-home .cinematic-finale-copy {
+        width: min(100%, 380px);
+        margin-inline: auto;
+        text-align: center;
+        align-items: center;
+    }
+
+    .cinematic-home .cinematic-finale-copy h2 {
+        width: 100%;
+        max-width: 370px;
+        margin-inline: auto;
+        font-size: clamp(3rem, 14vw, 4.25rem);
+        line-height: 0.86;
+        text-align: center;
+    }
+
+    .cinematic-home .cinematic-finale-copy h2 span {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .cinematic-home .cinematic-finale .cinematic-kicker {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .cinematic-home .cinematic-finale-facts {
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    .cinematic-home .cinematic-finale-link {
+        margin-inline: auto;
+    }
+}
+
+/* =========================================================
+   Mobile route detail fixes
+   ========================================================= */
+
+@media (max-width: 700px) {
+    /* Kapak görselini mobil ekranda ortala */
+
+    .cinematic-route-detail .route-hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .cinematic-route-detail .route-hero-grid>* {
+        min-width: 0;
+    }
+
+    .cinematic-route-detail .route-cover {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-inline: auto !important;
+        justify-self: stretch;
+        overflow: hidden;
+    }
+
+    .cinematic-route-detail .route-cover img {
+        display: block;
+        width: 100% !important;
+        max-width: 100%;
+        height: 100%;
+        margin: 0;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    /* İngilizce RECOMMENDATION arka plan yazısını küçült */
+
+    body.cinematic-route-detail[data-locale="en"] .insider-tip::before {
+        top: 18px;
+        right: 20px;
+        bottom: auto;
+        left: 20px;
+        width: auto;
+        max-width: calc(100% - 40px);
+
+        font-size: clamp(1.65rem, 7vw, 2rem);
+        line-height: 1;
+        letter-spacing: -0.035em;
+        white-space: nowrap;
+        text-align: left;
+
+        overflow: visible;
+        transform: none;
+    }
+
+        body.cinematic-route-detail[data-locale="en"] .insider-tip h3 {
+            position: relative;
+            z-index: 1;
+            margin-top: 10px;
+        }
+
+    body.cinematic-route-detail[data-locale="tr"] .insider-tip::before {
+        inset-inline: 22px;
+        width: auto;
+        font-size: clamp(2.5rem, 12vw, 4rem);
+        white-space: nowrap;
+        overflow: hidden;
+    }
 }
