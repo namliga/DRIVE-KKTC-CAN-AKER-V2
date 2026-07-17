@@ -106,9 +106,11 @@
             <header class="site-header">
                 <div class="container header-inner">
                     <a class="brand" href="${buildUrl(locale, "home", root)}" aria-label="Drive KKTC">
-                        <span class="brand-mark" aria-hidden="true">
-                            <span></span>
-                        </span>
+                        <img class="brand-mark"
+                             src="${root}favicon.svg"
+                             alt=""
+                             aria-hidden="true"
+                             style="border: 0; background: transparent; box-shadow: none;">
 
                         <span class="brand-text">
                             <strong>DRIVE</strong>
@@ -169,9 +171,11 @@
                 <div class="container footer-grid">
                     <div class="footer-brand">
                         <a class="brand" href="${buildUrl(locale, "home", root)}">
-                            <span class="brand-mark" aria-hidden="true">
-                                <span></span>
-                            </span>
+                            <img class="brand-mark"
+                                 src="${root}favicon.svg"
+                                 alt=""
+                                 aria-hidden="true"
+                                 style="border: 0; background: transparent; box-shadow: none;">
 
                             <span class="brand-text">
                                 <strong>DRIVE</strong>
